@@ -70,6 +70,7 @@ export default function AboutPage() {
               src="/images/hero.jpg"
               alt="Delhi Kolhu Wale Heritage Workshop"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
               priority
             />
@@ -94,9 +95,9 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-xl bg-amber-400/20 text-amber-400 flex items-center justify-center">
                 <FiAward className="w-6 h-6" />
               </div>
-              <h3 className="font-extrabold text-base text-white">100% Wood-Pressed</h3>
+              <h3 className="font-extrabold text-base text-white">100% Wood-Pressed &amp; Cold-Pressed</h3>
               <p className="text-xs text-stone-400 leading-relaxed">
-                Carved Vagai and Neem wood mortar &amp; pestle. Friction heat is strictly capped under 38°C to protect delicate seed enzymes.
+                पारंपरिक लकड़ी का कोल्हू व कच्ची घानी पिराई। राजस्थान की 100% सॉर्टेक्स साफ सरसों व बिना किसी केमिकल के शुद्ध तेल।
               </p>
             </div>
 
@@ -106,7 +107,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-extrabold text-base text-white">Vedic Clay-Pot Bilona</h3>
               <p className="text-xs text-stone-400 leading-relaxed">
-                A2 Gir Cow milk cultured into whole curd and hand-churned with bi-directional wooden mathani. Rich in healing butyric acid.
+                गाय व भैंस के दूध से मिट्टी की हांड़ी में दही जमाकर हाथ की लकड़ी की मथानी से बिलोया हुआ असली दानेदार बिलोना घी।
               </p>
             </div>
 
@@ -116,7 +117,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-extrabold text-base text-white">Zero Chemicals</h3>
               <p className="text-xs text-stone-400 leading-relaxed">
-                No hexane, no caustic soda, no bleaching earth, no argemone. Just pure, single-origin sun-dried seeds.
+                कोई हेक्सेन नहीं, कोई पाम ऑयल नहीं, कोई केमिकल नहीं। केवल 100% साफ छाँटे हुए बीजों का तेल।
               </p>
             </div>
 
@@ -126,7 +127,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-extrabold text-base text-white">Transparent Retail</h3>
               <p className="text-xs text-stone-400 leading-relaxed">
-                आँखों के सामने निकलता भरोसे से बिकता है. Every customer is welcome to inspect, smell, and watch extraction live in Delhi.
+                आँखों के सामने निकलता भरोसे से बिकता है। A1/10 कृष्णा नगर, दिल्ली की दुकान पर आप लाइव निकलते देख सकते हैं।
               </p>
             </div>
           </div>
@@ -136,24 +137,26 @@ export default function AboutPage() {
       {/* Call to Action */}
       <section className="max-w-4xl mx-auto px-4 text-center space-y-6">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif">
-          Experience True Purity in Your Own Kitchen
+          अपनी रसोई में लाएँ असली देशी शुद्धता
         </h2>
         <p className="text-stone-600 text-sm sm:text-base">
-          Order our freshly pressed Yellow Mustard Oil, Black Mustard Oil, or Vedic A2 Bilona Ghee with fast delivery across India.
+          15 किलोमीटर के दायरे में Same-Day फ्री होम डिलीवरी उपलब्ध है। दुकान समय: सुबह 9am से रात 11pm।
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/shop"
             className="px-8 py-3.5 rounded-xl bg-red-700 hover:bg-red-800 text-white font-extrabold text-sm uppercase tracking-wider shadow-lg"
           >
-            Explore Pure Products
+            सभी 17 उत्पाद देखें (Shop)
           </Link>
-          <Link
-            href="/contact"
+          <a
+            href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-sm"
           >
-            Visit Our Delhi Store
-          </Link>
+            दुकान पर आएँ (Google Maps)
+          </a>
         </div>
       </section>
     </div>

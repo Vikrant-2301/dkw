@@ -11,220 +11,251 @@ import {
   FiShield, 
   FiCheckCircle, 
   FiTruck, 
-  FiHeart 
+  FiHeart,
+  FiExternalLink
 } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 
 export const Footer: React.FC = () => {
   return (
     <>
-      <footer className="bg-stone-950 text-stone-300 pt-16 pb-10 border-t-4 border-amber-500 relative">
+      <footer className="bg-stone-950 text-stone-300 pt-12 pb-8 border-t border-stone-800 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* 4 Feature Banner Tiles */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-12 border-b border-stone-800">
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-stone-900/60 border border-stone-800">
-              <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
-                <FiCheckCircle className="w-6 h-6" />
+          {/* 4 Trust Highlights */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pb-10 border-b border-stone-800">
+            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+                <FiCheckCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm">आँखों के सामने निकलता</h4>
-                <p className="text-xs text-stone-400 mt-0.5">Live extraction before your eyes</p>
+                <h4 className="font-bold text-white text-xs sm:text-sm">Live Extraction</h4>
+                <p className="text-[11px] text-stone-400">आँखों के सामने ताज़ा पिराई</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-stone-900/60 border border-stone-800">
-              <div className="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center flex-shrink-0">
-                <FiShield className="w-6 h-6" />
+            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
+              <div className="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center flex-shrink-0">
+                <FiShield className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm">100% Purity Guarantee</h4>
-                <p className="text-xs text-stone-400 mt-0.5">NABL tested &amp; certified oils</p>
+                <h4 className="font-bold text-white text-xs sm:text-sm">Rajasthan Sortex</h4>
+                <p className="text-[11px] text-stone-400">100% साफ छाँटी हुई सरसों</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-stone-900/60 border border-stone-800">
-              <div className="w-12 h-12 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center flex-shrink-0">
-                <FiTruck className="w-6 h-6" />
+            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
+              <div className="w-10 h-10 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center flex-shrink-0">
+                <FiTruck className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm">Free Delivery on ₹799</h4>
-                <p className="text-xs text-stone-400 mt-0.5">Same-day dispatch in Delhi NCR</p>
+                <h4 className="font-bold text-white text-xs sm:text-sm">Free Home Delivery</h4>
+                <p className="text-[11px] text-stone-400">Same-day delivery up to 15km</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-stone-900/60 border border-stone-800">
-              <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
-                <FiHeart className="w-6 h-6" />
+            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+                <FiHeart className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm">Vedic 5-Step Bilona</h4>
-                <p className="text-xs text-stone-400 mt-0.5">Clay pot curd churned ghee</p>
+                <h4 className="font-bold text-white text-xs sm:text-sm">Vedic Bilona Ghee</h4>
+                <p className="text-[11px] text-stone-400">गाय व भैंस का मिट्टी की हांड़ी का घी</p>
               </div>
             </div>
           </div>
 
           {/* Main Footer Links & Info */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 py-12">
-            {/* Brand Intro */}
-            <div className="lg:col-span-2 space-y-4">
-              <DKWLogo size="lg" theme="light" />
-              <p className="text-sm text-stone-400 leading-relaxed pr-6">
-                Delhi Kolhu Wale is dedicated to bringing honest, unadulterated cold pressed oils and Vedic Bilona A2 Desi Ghee straight from the wooden churner to your dining table. Our mantra has always been simple:
-                <strong className="text-amber-300 block mt-1">
-                  &ldquo;आँखों के सामने निकलता भरोसे से बिकता है&rdquo;
-                </strong>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 py-10">
+            {/* Brand Column */}
+            <div className="lg:col-span-4 space-y-4">
+              <DKWLogo size="md" theme="light" />
+              <p className="text-xs sm:text-sm text-stone-400 leading-relaxed max-w-sm">
+                Authentic Lakdi Ki Ghani and Cold-Pressed oils crafted live in Delhi, accompanied by hand-churned Cow and Buffalo Vedic Bilona Ghee.
               </p>
+              
+              <div className="pt-1">
+                <p className="text-xs text-amber-300 font-bold font-sans">
+                  &ldquo;आँखों के सामने निकलता, भरोसे से बिकता है&rdquo;
+                </p>
+              </div>
 
-              <div className="pt-2 flex items-center gap-3 text-xs">
-                <span className="px-3 py-1 rounded bg-stone-800 text-stone-300 border border-stone-700 font-mono">
-                  FSSAI Lic: 13322008000456
+              <div className="pt-2 flex flex-wrap items-center gap-2 text-[11px]">
+                <span className="px-2.5 py-1 rounded-md bg-stone-900 text-stone-300 border border-stone-800 font-mono">
+                  FSSAI: 13322008000456
                 </span>
-                <span className="px-3 py-1 rounded bg-green-950 text-green-300 border border-green-800 font-bold">
-                  NABL Tested
+                <span className="px-2.5 py-1 rounded-md bg-stone-900 text-amber-400 border border-stone-800 font-medium">
+                  Rajasthan Sortex Mustard
+                </span>
+                <span className="px-2.5 py-1 rounded-md bg-stone-900 text-green-400 border border-stone-800 font-medium">
+                  15km Free Delivery
                 </span>
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4 border-l-2 border-amber-400 pl-2.5">
-                Our Pure Range
+            {/* Quick Links: Pure Oils */}
+            <div className="lg:col-span-3">
+              <h4 className="font-bold text-white text-xs sm:text-sm uppercase tracking-wider mb-4 text-stone-200">
+                Pure Oils (शुद्ध तेल)
               </h4>
-              <ul className="space-y-2 text-xs">
+              <ul className="space-y-2 text-xs text-stone-400">
                 <li>
-                  <Link href="/product/yellow-mustard-oil" className="hover:text-amber-400 transition-colors">
-                    Yellow Mustard Oil (पीली सरसों)
+                  <Link href="/product/sarson-kacchi-ghani" className="hover:text-amber-300 transition-colors">
+                    Mustard Kacchi Ghani Oil (कच्ची घानी)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/product/black-mustard-oil" className="hover:text-amber-400 transition-colors">
-                    Black Mustard Oil (काली सरसों)
+                  <Link href="/product/peeli-sarson-oil" className="hover:text-amber-300 transition-colors">
+                    Peeli Sarson Oil (Yellow Mustard)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/product/vedic-a2-bilona-gir-cow-ghee" className="hover:text-amber-400 transition-colors">
-                    Vedic A2 Gir Cow Bilona Ghee
+                  <Link href="/product/safed-sarson-oil" className="hover:text-amber-300 transition-colors">
+                    Safed Sarson Oil (White Mustard)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/product/pure-buffalo-bilona-desi-ghee" className="hover:text-amber-400 transition-colors">
+                  <Link href="/product/mungfali-tel" className="hover:text-amber-300 transition-colors">
+                    Pure Groundnut Oil (मूंगफली तेल)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/product/nariyal-tel" className="hover:text-amber-300 transition-colors">
+                    Pure Coconut Oil (नारियल तेल)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/product/badam-tel" className="hover:text-amber-300 transition-colors">
+                    Pure Badam Rogan (बादाम तेल)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/shop?category=oil" className="hover:text-amber-300 transition-colors text-amber-400 font-semibold pt-1 inline-block">
+                    View All 15 Oils &rarr;
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Quick Links: Ghee & About */}
+            <div className="lg:col-span-2">
+              <h4 className="font-bold text-white text-xs sm:text-sm uppercase tracking-wider mb-4 text-stone-200">
+                Bilona Ghee &amp; Info
+              </h4>
+              <ul className="space-y-2 text-xs text-stone-400">
+                <li>
+                  <Link href="/product/cow-bilona-ghee" className="hover:text-amber-300 transition-colors">
+                    Desi Cow Bilona Ghee
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/product/buffalo-bilona-ghee" className="hover:text-amber-300 transition-colors">
                     Murrah Buffalo Bilona Ghee
                   </Link>
                 </li>
                 <li>
-                  <Link href="/product/pure-badam-rogan-almond-oil" className="hover:text-amber-400 transition-colors">
-                    Pure Badam Rogan (Almond)
+                  <Link href="/shop" className="hover:text-amber-300 transition-colors">
+                    All Products (सभी उत्पाद)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/product/wood-pressed-coconut-oil" className="hover:text-amber-400 transition-colors">
-                    Virgin Coconut Oil
+                  <Link href="/process" className="hover:text-amber-300 transition-colors">
+                    Our Process (हमारा तरीका)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/product/wood-pressed-white-sesame-oil" className="hover:text-amber-400 transition-colors">
-                    White Sesame Oil (तिल तेल)
+                  <Link href="/about" className="hover:text-amber-300 transition-colors">
+                    About DKW (हमारे बारे में)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-amber-300 transition-colors">
+                    Contact &amp; Store Visit
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Transparency & Process */}
-            <div>
-              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4 border-l-2 border-amber-400 pl-2.5">
-                Purity &amp; Process
+            {/* Store Address & Contact */}
+            <div className="lg:col-span-3">
+              <h4 className="font-bold text-white text-xs sm:text-sm uppercase tracking-wider mb-4 text-stone-200">
+                Visit Our Store (दुकान का पता)
               </h4>
-              <ul className="space-y-2 text-xs">
-                <li>
-                  <Link href="/process" className="hover:text-amber-400 transition-colors">
-                    The Lakdi Ka Kolhu Method
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/process#bilona" className="hover:text-amber-400 transition-colors">
-                    5-Step Vedic Bilona Churning
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/lab-reports" className="hover:text-amber-400 transition-colors">
-                    Download NABL Lab Reports
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="hover:text-amber-400 transition-colors">
-                    About Delhi Kolhu Wale
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact#schedule-visit" className="hover:text-amber-400 transition-colors">
-                    Book Live Extraction Visit
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/shop" className="hover:text-amber-400 transition-colors">
-                    Special Kitchen Combos
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Visit & Contact */}
-            <div>
-              <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-4 border-l-2 border-amber-400 pl-2.5">
-                Visit Delhi Mill
-              </h4>
-              <ul className="space-y-3 text-xs text-stone-300">
+              <ul className="space-y-3 text-xs text-stone-400">
                 <li className="flex items-start gap-2.5">
                   <FiMapPin className="text-amber-400 w-4 h-4 flex-shrink-0 mt-0.5" />
-                  <span>
-                    DKW Experience Mill, Plot 14, Main Road, Delhi NCR - 110085, India
-                  </span>
+                  <div>
+                    <span className="text-stone-200 font-medium">
+                      A1/10, Main Road Krishna Nagar, Near Chhachi Building, Delhi - 110051
+                    </span>
+                    <a
+                      href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-amber-400 hover:underline flex items-center gap-1 mt-1 font-semibold"
+                    >
+                      <span>View on Google Maps</span>
+                      <FiExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <FiClock className="text-amber-400 w-4 h-4 flex-shrink-0" />
+                  <span>Open Daily: 9:00 AM – 11:00 PM</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <FiPhone className="text-amber-400 w-4 h-4 flex-shrink-0" />
-                  <a href="tel:9971207645" className="hover:text-amber-300 font-bold">
+                  <a href="tel:9971207645" className="hover:text-amber-300 font-semibold text-white">
                     +91 9971207645
                   </a>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <FiMail className="text-amber-400 w-4 h-4 flex-shrink-0" />
-                  <span>care@dkw.com</span>
+                  <a href="mailto:delhikolhuwale@gmail.com" className="hover:text-amber-300 text-stone-300">
+                    delhikolhuwale@gmail.com
+                  </a>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <FiClock className="text-amber-400 w-4 h-4 flex-shrink-0" />
-                  <span>Open Daily: 8:00 AM – 8:00 PM</span>
+                  <FiTruck className="text-green-400 w-4 h-4 flex-shrink-0" />
+                  <span className="text-green-300 font-medium">
+                    Same-Day Free Home Delivery (&lt;15 km)
+                  </span>
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="pt-8 mt-4 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
+          {/* Clean Bottom Copyright Bar */}
+          <div className="pt-6 mt-4 border-t border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500">
             <p>
-              &copy; {new Date().getFullYear()} Delhi Kolhu Wale (DKW). All Rights Reserved.
+              &copy; {new Date().getFullYear()} Delhi Kolhu Wale. A1/10 Krishna Nagar, Delhi-110051.
             </p>
-            <div className="flex items-center gap-4">
-              <span className="text-amber-400/80 font-serif">
-                आँखों के सामने निकलता भरोसे से बिकता है
-              </span>
+            <div className="flex items-center gap-4 text-stone-400">
+              <a href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49" target="_blank" rel="noopener noreferrer" className="hover:text-amber-300 transition-colors">
+                Google Maps
+              </a>
               <span>•</span>
-              <a href="https://www.dkw.com" className="hover:underline">www.dkw.com</a>
+              <a href="tel:9971207645" className="hover:text-stone-300 transition-colors">
+                Call: 9971207645
+              </a>
+              <span>•</span>
+              <a href="https://wa.me/919971207645" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
+                WhatsApp Order
+              </a>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* Floating WhatsApp Quick Action Button */}
+      {/* Floating WhatsApp Action Button */}
       <a
         href="https://wa.me/919971207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order%20pure%20cold-pressed%20oil%20and%20bilona%20ghee."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
         aria-label="Chat on WhatsApp with Delhi Kolhu Wale"
       >
-        <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6" />
+        <FaWhatsapp className="w-5 h-5" />
         <span className="hidden sm:inline">Order via WhatsApp</span>
-        <span className="w-2.5 h-2.5 rounded-full bg-green-300 animate-ping absolute -top-1 -right-1" />
       </a>
     </>
   );

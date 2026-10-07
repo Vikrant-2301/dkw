@@ -47,10 +47,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/shop', label: 'Shop' },
-    { href: '/shop?category=bilona-ghee', label: 'Bilona Ghee' },
-    { href: '/shop?category=mustard-oils', label: 'Mustard Oils' },
     { href: '/process', label: 'Our Process' },
-    { href: '/lab-reports', label: 'Lab Reports' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact & Visit' },
   ];
@@ -68,7 +65,7 @@ export const Navbar: React.FC = () => {
             </span>
             <span className="hidden md:inline text-amber-400/50">•</span>
             <span className="hidden md:inline text-stone-300 font-medium">
-              100% Pure Cold-Pressed Oils &amp; Desi Bilona Ghee
+              100% Sortex Rajasthan Mustard • Free Delivery up to 15km (15km फ्री डिलीवरी)
             </span>
           </div>
 
@@ -79,7 +76,7 @@ export const Navbar: React.FC = () => {
               className="flex items-center gap-1.5 hover:text-amber-300 font-semibold transition-colors"
             >
               <FiPhone className="text-amber-400 w-3.5 h-3.5" />
-              <span>+91 9971207645</span>
+              <span>9971207645</span>
             </a>
             <span className="text-stone-600">|</span>
             <a
@@ -89,16 +86,18 @@ export const Navbar: React.FC = () => {
               className="flex items-center gap-1.5 text-green-400 hover:text-green-300 font-semibold transition-colors"
             >
               <FaWhatsapp className="text-sm" />
-              <span className="hidden sm:inline">WhatsApp Order</span>
+              <span className="hidden sm:inline">WhatsApp</span>
             </a>
             <span className="text-stone-600 hidden lg:inline">|</span>
-            <Link
-              href="/process#visit-unit"
+            <a
+              href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden lg:flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-medium"
             >
               <FiMapPin className="w-3.5 h-3.5" />
-              <span>Delhi Workshop</span>
-            </Link>
+              <span>कृष्णा नगर (Krishna Nagar)</span>
+            </a>
           </div>
         </div>
       </div>
@@ -285,6 +284,7 @@ export const Navbar: React.FC = () => {
                         src={p.image}
                         alt={p.name}
                         fill
+                        sizes="56px"
                         className="object-cover group-hover:scale-105 transition-transform"
                       />
                     </div>

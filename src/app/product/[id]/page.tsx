@@ -36,7 +36,7 @@ export default function ProductDetailPage() {
     product?.volumes[0] || { size: '1 Liter', price: 360, originalPrice: 450, packaging: 'Bottle' }
   );
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<'benefits' | 'nutrition' | 'extraction' | 'lab'>('benefits');
+  const [activeTab, setActiveTab] = useState<'benefits' | 'process'>('benefits');
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [addedMessage, setAddedMessage] = useState(false);
 
@@ -104,6 +104,7 @@ export default function ProductDetailPage() {
               src={currentImage}
               alt={product.name}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
               priority
             />
@@ -113,7 +114,7 @@ export default function ProductDetailPage() {
               </span>
             )}
             <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-stone-900 shadow-md">
-              {product.category === 'bilona-ghee' ? 'Vedic Bilona Churn' : 'Lakdi Ki Ghani'}
+              {product.category === 'ghee' ? 'शुद्ध बिलोना घी' : 'कोल्हू व कच्ची घानी'}
             </div>
           </div>
 
@@ -130,7 +131,7 @@ export default function ProductDetailPage() {
                       : 'border-stone-200 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <Image src={img} alt={`${product.name} view ${idx + 1}`} fill className="object-cover" />
+                  <Image src={img} alt={`${product.name} view ${idx + 1}`} fill sizes="80px" className="object-cover" />
                 </button>
               ))}
             </div>
@@ -144,7 +145,7 @@ export default function ProductDetailPage() {
             <div className="text-xs">
               <h5 className="font-bold text-amber-950">आँखों के सामने निकलता भरोसे से बिकता है</h5>
               <p className="text-amber-800/80 mt-0.5">
-                Every batch extracted fresh in Delhi under 38°C without friction heat or chemical solvents.
+                राजस्थान की 100% सॉर्टेक्स साफ सरसों व शुद्ध बीजों से ताज़ा निकाला गया तेल। शून्य केमिकल।
               </p>
             </div>
           </div>
@@ -298,34 +299,32 @@ export default function ProductDetailPage() {
           {/* Quick Perks */}
           <div className="grid grid-cols-2 gap-3 pt-3 text-xs text-stone-600 border-t border-stone-200">
             <div className="flex items-center gap-2">
-              <FiTruck className="text-red-700 w-4 h-4 flex-shrink-0" />
-              <span>Free Delivery above ₹799</span>
+              <FiTruck className="text-green-700 w-4 h-4 flex-shrink-0" />
+              <span>15km Same-Day फ्री डिलीवरी</span>
             </div>
             <div className="flex items-center gap-2">
               <FiShield className="text-red-700 w-4 h-4 flex-shrink-0" />
-              <span>NABL Lab Purity Guaranteed</span>
+              <span>100% शुद्धता की गारंटी</span>
             </div>
             <div className="flex items-center gap-2">
-              <FiAward className="text-red-700 w-4 h-4 flex-shrink-0" />
-              <span>100% Traditional Lakdi Ghani</span>
+              <FiAward className="text-amber-700 w-4 h-4 flex-shrink-0" />
+              <span>{product.category === 'ghee' ? 'मिट्टी की हांड़ी का बिलोना घी' : 'कोल्हू व कच्ची घानी उपलब्ध'}</span>
             </div>
             <div className="flex items-center gap-2">
-              <FiMapPin className="text-red-700 w-4 h-4 flex-shrink-0" />
-              <span>Same-Day Delhi NCR Dispatch</span>
+              <FiMapPin className="text-stone-700 w-4 h-4 flex-shrink-0" />
+              <span>कृष्णा नगर, दिल्ली स्टोर</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Tabs Section: Benefits, Nutrition, Extraction, Lab Certificate */}
+      {/* Tabs Section: Health Benefits & Process */}
       <div className="bg-white rounded-3xl border border-stone-200 shadow-xs overflow-hidden">
         {/* Tab Headers */}
         <div className="flex border-b border-stone-200 overflow-x-auto">
           {[
-            { id: 'benefits', label: 'Health Benefits' },
-            { id: 'nutrition', label: 'Nutritional Facts' },
-            { id: 'extraction', label: 'Kolhu Extraction Specs' },
-            { id: 'lab', label: 'Lab Purity Report' },
+            { id: 'benefits', label: 'Health Benefits (स्वास्थ्य लाभ)' },
+            { id: 'process', label: 'Process & Sourcing (शुद्धता व विधि)' },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -345,7 +344,7 @@ export default function ProductDetailPage() {
         <div className="p-6 sm:p-8">
           {activeTab === 'benefits' && (
             <div className="space-y-4">
-              <h3 className="font-extrabold text-stone-900 text-lg">Key Health Benefits</h3>
+              <h3 className="font-extrabold text-stone-900 text-lg">Key Health Benefits (स्वास्थ्य लाभ)</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {product.benefits.map((b, i) => (
                   <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl bg-amber-50/60 border border-amber-200/60">
@@ -354,95 +353,29 @@ export default function ProductDetailPage() {
                   </div>
                 ))}
               </div>
-              {product.smokePoint && (
-                <div className="mt-4 p-4 rounded-xl bg-stone-100 text-xs text-stone-700">
-                  <strong>Smoke Point &amp; Cooking Profile:</strong> {product.smokePoint}
-                </div>
-              )}
             </div>
           )}
 
-          {activeTab === 'nutrition' && (
+          {activeTab === 'process' && (
             <div className="space-y-4">
-              <h3 className="font-extrabold text-stone-900 text-lg">Nutritional Information (Approx per 100g)</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
-                  <span className="text-xs text-stone-500">Energy Value</span>
-                  <span className="block text-base font-extrabold text-stone-900 mt-1">{product.nutritionalInfo.energy}</span>
-                </div>
-                <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
-                  <span className="text-xs text-stone-500">Total Fats</span>
-                  <span className="block text-base font-extrabold text-stone-900 mt-1">{product.nutritionalInfo.fat}</span>
-                </div>
-                <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
-                  <span className="text-xs text-stone-500">Monounsaturated (MUFA)</span>
-                  <span className="block text-base font-extrabold text-stone-900 mt-1">{product.nutritionalInfo.mufa}</span>
-                </div>
-                <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
-                  <span className="text-xs text-stone-500">Polyunsaturated (PUFA)</span>
-                  <span className="block text-base font-extrabold text-stone-900 mt-1">{product.nutritionalInfo.pufa}</span>
-                </div>
-              </div>
-              <p className="text-xs text-stone-500 pt-2">
-                * Rich in naturally occurring {product.nutritionalInfo.vitamins}. Zero chemical trans fats, 0mg cholesterol.
-              </p>
-            </div>
-          )}
-
-          {activeTab === 'extraction' && (
-            <div className="space-y-4">
-              <h3 className="font-extrabold text-stone-900 text-lg">Kolhu Extraction Engineering</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
-                <div className="p-3.5 rounded-xl border border-stone-200 bg-stone-50">
-                  <span className="text-stone-500 font-semibold">Extraction Method:</span>
-                  <p className="font-bold text-stone-900 mt-1">{product.extractionDetails.method}</p>
-                </div>
-                <div className="p-3.5 rounded-xl border border-stone-200 bg-stone-50">
-                  <span className="text-stone-500 font-semibold">Temperature Maintained:</span>
-                  <p className="font-bold text-green-700 mt-1">{product.extractionDetails.temperature}</p>
-                </div>
-                <div className="p-3.5 rounded-xl border border-stone-200 bg-stone-50">
-                  <span className="text-stone-500 font-semibold">Rotation Speed:</span>
-                  <p className="font-bold text-stone-900 mt-1">{product.extractionDetails.rpm}</p>
-                </div>
-                <div className="p-3.5 rounded-xl border border-stone-200 bg-stone-50">
-                  <span className="text-stone-500 font-semibold">Seed Origin:</span>
-                  <p className="font-bold text-stone-900 mt-1">{product.extractionDetails.seedOrigin}</p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'lab' && (
-            <div className="space-y-4">
-              <h3 className="font-extrabold text-stone-900 text-lg">NABL Laboratory Purity Testing</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
-                <div className="p-3.5 rounded-xl border border-green-200 bg-green-50/60">
-                  <span className="text-green-800 font-semibold">Purity Score:</span>
-                  <p className="font-extrabold text-green-950 mt-1">{product.labReportSummary.purity}</p>
-                </div>
-                <div className="p-3.5 rounded-xl border border-green-200 bg-green-50/60">
-                  <span className="text-green-800 font-semibold">Argemone &amp; Mineral Oil:</span>
-                  <p className="font-extrabold text-green-950 mt-1">{product.labReportSummary.argemone}</p>
-                </div>
-                <div className="p-3.5 rounded-xl border border-green-200 bg-green-50/60">
-                  <span className="text-green-800 font-semibold">Free Fatty Acid (FFA):</span>
-                  <p className="font-extrabold text-green-950 mt-1">{product.labReportSummary.freeFattyAcid}</p>
-                </div>
-                <div className="p-3.5 rounded-xl border border-green-200 bg-green-50/60">
-                  <span className="text-green-800 font-semibold">Adulteration Status:</span>
-                  <p className="font-extrabold text-green-950 mt-1">{product.labReportSummary.adulteration}</p>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  href="/lab-reports"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-red-700 hover:underline"
-                >
-                  <span>View Full NABL Certificate &amp; FSSAI Documentation</span>
-                  <FiArrowRight />
-                </Link>
+              <h3 className="font-extrabold text-stone-900 text-lg">Process &amp; Sourcing (पारंपरिक शुद्धता व विधि)</h3>
+              <div className="space-y-3 text-xs sm:text-sm text-stone-700 leading-relaxed bg-stone-50 p-5 rounded-2xl border border-stone-200">
+                <p>
+                  <strong>{product.name} ({product.hindiName}):</strong> {product.description}
+                </p>
+                {product.sourcingNote && (
+                  <p className="text-amber-900 font-bold">
+                    ★ Sourcing Origin: {product.sourcingNote}
+                  </p>
+                )}
+                {product.availableTypes && (
+                  <p className="text-stone-800 font-semibold">
+                    ✓ Extraction Type: {product.availableTypes}
+                  </p>
+                )}
+                <p className="text-stone-600 pt-2 border-t border-stone-200">
+                  Visit our shop at <strong>A1/10, Main Road Krishna Nagar, Delhi - 110051</strong> to watch your batch extracted live. Same-day free home delivery available up to 15 km in Delhi NCR.
+                </p>
               </div>
             </div>
           )}

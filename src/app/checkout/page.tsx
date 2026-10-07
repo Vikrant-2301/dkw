@@ -28,7 +28,7 @@ export default function CheckoutPage() {
     address: '',
     city: 'New Delhi',
     state: 'Delhi',
-    pincode: '110085',
+    pincode: '110051',
     deliveryType: 'standard',
     paymentMethod: 'upi',
   });
@@ -374,7 +374,7 @@ export default function CheckoutPage() {
               {cart.map((item) => (
                 <div key={`${item.product.id}-${item.selectedVolume.size}`} className="py-3 flex items-center gap-3">
                   <div className="w-12 h-12 rounded-lg overflow-hidden bg-stone-100 relative flex-shrink-0">
-                    <Image src={item.product.image} alt={item.product.name} fill className="object-cover" />
+                    <Image src={item.product.image} alt={item.product.name} fill sizes="48px" className="object-cover" />
                   </div>
                   <div className="flex-1 min-w-0 text-xs">
                     <h4 className="font-bold text-stone-900 truncate">{item.product.name}</h4>

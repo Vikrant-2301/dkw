@@ -48,16 +48,16 @@ function ShopContent() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Header Banner */}
-      <div className="rounded-3xl bg-gradient-to-r from-stone-900 via-stone-850 to-red-950 text-white p-8 sm:p-10 shadow-xl border border-stone-800">
-        <div className="max-w-2xl space-y-3">
+      <div className="rounded-3xl bg-gradient-to-r from-stone-900 via-stone-850 to-red-950 text-white p-7 sm:p-9 shadow-xl border border-stone-800">
+        <div className="max-w-2xl space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-300">
-            Delhi Kolhu Wale • Pure Catalog
+            Delhi Kolhu Wale • Pure Catalog (शुद्ध उत्पाद)
           </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-white">
-            100% Pure Wood-Pressed Oils &amp; Vedic Bilona Ghee
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-serif text-white">
+            100% Pure Oils &amp; Vedic Bilona Ghee
           </h1>
-          <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
-            Extracted live in Delhi at &lt;38°C. Select your preferred bottle size, tin canister, or gifting combo.
+          <p className="text-stone-300 text-xs sm:text-sm leading-relaxed">
+            Crafted from 100% Sortex cleaned Rajasthan mustard seeds (सॉर्टेक्स सरसों) and earthen clay-pot curd. Zero chemicals, zero hexane. Same-day free home delivery within 15 km in Delhi NCR.
           </p>
         </div>
       </div>

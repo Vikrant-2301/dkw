@@ -47,6 +47,7 @@ export const OriginalBannerShowcase: React.FC = () => {
                 src="/logo.png"
                 alt="DKW Delhi Kolhu Wale Official Emblem"
                 fill
+                sizes="(max-width: 640px) 176px, (max-width: 1024px) 224px, 256px"
                 className="object-contain"
                 priority
               />
@@ -121,13 +122,14 @@ export const OriginalBannerShowcase: React.FC = () => {
                 src="/images/bilona_tradition.jpg"
                 alt="Traditional Bilona Churning in clay pot"
                 fill
+                sizes="64px"
                 className="object-cover"
               />
             </div>
             <div>
               <h4 className="text-amber-300 font-bold text-xs sm:text-sm">Vedic Terracotta Bilona Ghee</h4>
               <p className="text-[11px] sm:text-xs text-white/80 line-clamp-2 mt-0.5">
-                Hand-churned in clay matkas from cultured A2 curd, retaining natural aroma and healing butyric acid.
+                Hand-churned in clay matkas from cultured curd, retaining natural aroma and pure nutrition.
               </p>
             </div>
           </div>
@@ -139,13 +141,14 @@ export const OriginalBannerShowcase: React.FC = () => {
                 src="/images/process_live.jpg"
                 alt="Lakdi Ka Kolhu Mustard Oil Machine"
                 fill
+                sizes="64px"
                 className="object-cover"
               />
             </div>
             <div>
               <h4 className="text-amber-300 font-bold text-xs sm:text-sm">Lakdi Ki Ghani (Wooden Kolhu)</h4>
               <p className="text-[11px] sm:text-xs text-white/80 line-clamp-2 mt-0.5">
-                Slow crushed below 38°C without friction heat. Zero chemicals, zero hexane, 100% natural oil.
+                Slow crushed without artificial heat. Zero chemicals, 100% natural pure oil.
               </p>
             </div>
           </div>

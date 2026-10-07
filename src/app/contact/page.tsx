@@ -59,10 +59,18 @@ export default function ContactPage() {
                   <FiMapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-stone-900">Delhi Workshop &amp; Experience Mill</h4>
+                  <h4 className="font-bold text-stone-900">Delhi Store &amp; Workshop Address</h4>
                   <p className="text-stone-600 mt-0.5">
-                    Plot 14, Main Road, Delhi NCR - 110085, India
+                    A1/10, Main Road Krishna Nagar, Near Chhachi Building, Delhi - 110051
                   </p>
+                  <a
+                    href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber-800 hover:underline font-bold text-xs inline-block mt-1"
+                  >
+                    📍 Open Google Maps Location &rarr;
+                  </a>
                 </div>
               </div>
 
@@ -83,7 +91,7 @@ export default function ContactPage() {
                   <FaWhatsapp className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-stone-900">WhatsApp Direct Support</h4>
+                  <h4 className="font-bold text-stone-900">WhatsApp Order Support</h4>
                   <a
                     href="https://wa.me/919971207645"
                     target="_blank"
@@ -101,7 +109,9 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-stone-900">Email</h4>
-                  <p className="text-stone-600">care@dkw.com / orders@dkw.com</p>
+                  <a href="mailto:delhikolhuwale@gmail.com" className="text-stone-600 hover:underline">
+                    delhikolhuwale@gmail.com
+                  </a>
                 </div>
               </div>
 
@@ -111,20 +121,22 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-stone-900">Visiting Hours</h4>
-                  <p className="text-stone-600">Monday to Sunday: 8:00 AM – 8:00 PM</p>
+                  <p className="text-stone-600">Open Daily: 9:00 AM – 11:00 PM</p>
+                  <p className="text-green-700 text-xs font-semibold mt-0.5">
+                    15 किमी के दायरे में Same-Day फ्री होम डिलीवरी
+                  </p>
                 </div>
               </div>
             </div>
 
             <div className="pt-2 border-t border-stone-100">
               <a
-                href="https://wa.me/919971207645?text=Hello%20DKW,%20I%20want%20to%20visit%20the%20Delhi%20Kolhu%20workshop."
+                href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow"
+                className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow"
               >
-                <FaWhatsapp className="text-lg" />
-                <span>Send WhatsApp Location Request</span>
+                <span>Google Maps पर लोकेशन देखें</span>
               </a>
             </div>
           </div>

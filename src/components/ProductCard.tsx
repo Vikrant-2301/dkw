@@ -29,11 +29,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="group relative bg-white rounded-2xl border border-stone-200 hover:border-amber-400/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
+    <div className="group relative bg-white rounded-2xl border border-stone-200 hover:border-amber-400 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
       {/* Badges on Top */}
       <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between pointer-events-none">
-        <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500 text-stone-900 shadow-sm border border-amber-400">
-          {product.category === 'bilona-ghee' ? 'Vedic Bilona' : 'Wood-Pressed (Kolhu)'}
+        <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-400 text-stone-950 shadow-sm border border-amber-300">
+          {product.category === 'ghee' ? 'Pure Bilona Ghee' : 'Wood & Cold-Pressed'}
         </span>
         {discountPercent > 0 && (
           <span className="px-2 py-0.5 rounded-full text-[11px] font-extrabold bg-red-600 text-white shadow-sm">
@@ -54,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
           <span className="text-white text-xs font-semibold flex items-center gap-1">
             View Details <FiArrowRight className="w-3 h-3" />
           </span>
@@ -87,10 +87,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <h3 className="font-bold text-stone-900 text-base leading-snug line-clamp-1">
               {product.name}
             </h3>
-            <p className="text-xs text-red-600 font-semibold mt-0.5 line-clamp-1 font-sans">
+            <p className="text-xs text-red-600 font-semibold mt-0.5 line-clamp-1">
               {product.hindiName}
             </p>
           </Link>
+
+          {/* Sourcing note if Sortex Rajasthan */}
+          {product.sourcingNote && (
+            <div className="mt-1.5 inline-block text-[11px] font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+              ★ {product.sourcingNote}
+            </div>
+          )}
 
           {/* Short Description */}
           <p className="text-xs text-stone-500 mt-2 line-clamp-2 leading-relaxed">
@@ -110,9 +117,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   key={vol.size}
                   type="button"
                   onClick={() => setSelectedVolume(vol)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     selectedVolume.size === vol.size
-                      ? 'bg-amber-100 text-amber-900 border-2 border-amber-500 shadow-2xs'
+                      ? 'bg-amber-100 text-amber-900 border-2 border-amber-500 shadow-2xs font-bold'
                       : 'bg-stone-100 hover:bg-stone-200 text-stone-700 border border-transparent'
                   }`}
                 >
@@ -142,7 +149,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
             <button
               onClick={handleAdd}
-              className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-bold text-xs transition-all shadow-sm ${
+              className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-bold text-xs transition-all shadow-sm cursor-pointer ${
                 justAdded
                   ? 'bg-green-700 text-white'
                   : 'bg-red-700 hover:bg-red-800 text-white hover:shadow-md'
@@ -157,7 +164,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               ) : (
                 <>
                   <FiShoppingBag className="w-4 h-4" />
-                  <span>Add</span>
+                  <span>Add to Cart</span>
                 </>
               )}
             </button>

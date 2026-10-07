@@ -5,12 +5,16 @@ export interface ProductVolume {
   packaging: string;
 }
 
+export type ProductCategory = 'oil' | 'ghee';
+
 export interface Product {
   id: string;
   name: string;
   hindiName: string;
   slug: string;
-  category: 'mustard-oils' | 'bilona-ghee' | 'nut-seed-oils' | 'wellness-rogan' | 'combos';
+  category: ProductCategory;
+  availableTypes?: string; // e.g. 'लकड़ी का कोल्हू (Wood Pressed) व कच्ची घानी (Cold Pressed)' or 'गाय का बिलोना' / 'भैंस का बिलोना'
+  sourcingNote?: string; // e.g. 'राजस्थान की 100% सॉर्टेक्स साफ सरसों'
   shortDesc: string;
   description: string;
   price: number;
@@ -26,27 +30,19 @@ export interface Product {
   benefits: string[];
   processHighlight: string;
   smokePoint?: string;
-  nutritionalInfo: {
-    energy: string;
-    fat: string;
-    saturatedFat: string;
-    mufa: string;
-    pufa: string;
-    cholesterol: string;
-    vitamins: string;
+  nutritionalInfo?: {
+    energy?: string;
+    fat?: string;
+    saturatedFat?: string;
+    mufa?: string;
+    pufa?: string;
+    cholesterol?: string;
+    vitamins?: string;
   };
-  extractionDetails: {
-    method: string;
-    temperature: string;
-    rpm: string;
-    seedOrigin: string;
-    woodType: string;
-  };
-  labReportSummary: {
-    purity: string;
-    adulteration: string;
-    argemone: string;
-    freeFattyAcid: string;
+  extractionDetails?: {
+    method?: string;
+    seedOrigin?: string;
+    type?: string;
   };
 }
 

@@ -92,6 +92,7 @@ export const LiveExtractionBanner: React.FC = () => {
                 src="/images/process_live.jpg"
                 alt="Lakdi Ki Ghani Wood-Press Kolhu live extraction in action"
                 fill
+                sizes="(max-width: 1024px) 100vw, 500px"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent flex items-end p-6">
@@ -102,7 +103,7 @@ export const LiveExtractionBanner: React.FC = () => {
                   <p className="text-white font-bold text-sm mt-2">
                     Traditional Wood Mortar &amp; Pestle (Lakdi Ka Kolhu) in Delhi
                   </p>
-                  <p className="text-xs text-amber-200">Room temperature cold press under 38°C</p>
+                  <p className="text-xs text-amber-200">Natural slow pressing without artificial heat</p>
                 </div>
               </div>
             </div>

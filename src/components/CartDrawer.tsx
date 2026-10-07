@@ -129,6 +129,7 @@ export const CartDrawer: React.FC = () => {
                       src={item.product.image}
                       alt={item.product.name}
                       fill
+                      sizes="72px"
                       className="object-cover"
                     />
                   </div>
