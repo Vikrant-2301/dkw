@@ -64,15 +64,15 @@ export default function HomePage() {
               </div>
 
               {/* Main Headline */}
-              <div className="space-y-2">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-serif tracking-wide leading-tight">
+              <div className="space-y-1.5 sm:space-y-2">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white font-serif tracking-wide leading-tight">
                   DELHI KOLHU WALE
                   <span className="text-amber-400 text-xs sm:text-sm align-top ml-1">TM</span>
                 </h1>
-                <p className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-amber-300 font-sans tracking-wide leading-snug">
+                <p className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-amber-300 font-sans tracking-wide leading-snug">
                   आँखों के सामने निकलता, भरोसे से बिकता है
                 </p>
-                <p className="text-sm sm:text-base text-amber-100/90 font-medium tracking-wide">
+                <p className="text-xs sm:text-base text-amber-100/90 font-medium tracking-wide">
                   100% Pure Wood-Pressed Oils &amp; Clay-Pot Vedic Bilona Ghee
                 </p>
               </div>
@@ -83,71 +83,78 @@ export default function HomePage() {
               </p>
 
               {/* 4 Trust Highlights */}
-              <div className="grid grid-cols-2 gap-2.5 pt-1 text-xs text-stone-200 max-w-lg mx-auto lg:mx-0">
-                <div className="flex items-center gap-2 bg-white/5 py-2 px-3 rounded-xl border border-white/10">
+              <div className="grid grid-cols-2 gap-2 sm:gap-2.5 pt-1 text-[11px] sm:text-xs text-stone-200 max-w-lg mx-auto lg:mx-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-white/5 py-1.5 px-2.5 sm:py-2 sm:px-3 rounded-lg sm:rounded-xl border border-white/10">
                   <FiCheckCircle className="text-amber-400 flex-shrink-0" />
                   <span>100% Rajasthan Sortex Mustard</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/5 py-2 px-3 rounded-xl border border-white/10">
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-white/5 py-1.5 px-2.5 sm:py-2 sm:px-3 rounded-lg sm:rounded-xl border border-white/10">
                   <FiCheckCircle className="text-amber-400 flex-shrink-0" />
                   <span>Wood-Pressed &amp; Cold-Pressed</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/5 py-2 px-3 rounded-xl border border-white/10">
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-white/5 py-1.5 px-2.5 sm:py-2 sm:px-3 rounded-lg sm:rounded-xl border border-white/10">
                   <FiTruck className="text-green-400 flex-shrink-0" />
                   <span>Free Same-Day Delivery (&lt;15km)</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/5 py-2 px-3 rounded-xl border border-white/10">
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-white/5 py-1.5 px-2.5 sm:py-2 sm:px-3 rounded-lg sm:rounded-xl border border-white/10">
                   <FiCheckCircle className="text-amber-400 flex-shrink-0" />
                   <span>Cow &amp; Buffalo Bilona Ghee</span>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+              <div className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2.5 pt-2">
                 <Link
                   href="/shop"
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-red-700 hover:bg-red-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all hover:scale-[1.02]"
+                  className="flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-xl bg-red-700 hover:bg-red-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all hover:scale-[1.02]"
                 >
                   <span>Shop Pure Range</span>
                   <FiArrowRight className="w-4 h-4" />
                 </Link>
 
-                <a
-                  href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/20 transition-all"
-                >
-                  <FiMapPin className="text-amber-400 w-4 h-4" />
-                  <span>Visit Shop (Google Maps)</span>
-                </a>
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 px-3 py-2.5 sm:py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-all text-center"
+                  >
+                    <FiMapPin className="text-amber-400 w-3.5 h-3.5 flex-shrink-0" />
+                    <span>Google Maps</span>
+                  </a>
 
-                <a
-                  href="https://wa.me/919971207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order%20pure%20cold%20pressed%20oil%20and%20ghee"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-3.5 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
-                >
-                  <FaWhatsapp className="text-base" />
-                  <span>Order on WhatsApp</span>
-                </a>
+                  <a
+                    href="https://wa.me/919971207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order%20pure%20cold%20pressed%20oil%20and%20ghee"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 px-3 py-2.5 sm:py-3.5 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-xs shadow-md transition-all text-center"
+                  >
+                    <FaWhatsapp className="text-sm flex-shrink-0" />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Right Column: Featured Product Stage */}
             <div className="lg:col-span-5 relative">
-              <div className="flex items-center justify-center gap-1.5 mb-3 bg-white/10 p-1 rounded-2xl border border-white/15 max-w-sm mx-auto">
-                {['Kacchi Ghani Mustard', 'Cow Bilona Ghee', 'Pure Badam Rogan'].map((label, idx) => (
+              <div className="flex items-center justify-center gap-1 sm:gap-1.5 mb-3 bg-white/10 p-1 rounded-2xl border border-white/15 max-w-sm mx-auto">
+                {[
+                  { en: 'Kacchi Ghani Mustard', short: 'Mustard Oil' },
+                  { en: 'Cow Bilona Ghee', short: 'Cow Ghee' },
+                  { en: 'Pure Badam Rogan', short: 'Badam Rogan' },
+                ].map((item, idx) => (
                   <button
-                    key={label}
+                    key={item.en}
                     onClick={() => setHeroTab(idx)}
-                    className={`flex-1 py-1.5 px-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    className={`flex-1 py-1.5 px-1 sm:px-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all cursor-pointer text-center whitespace-nowrap ${
                       heroTab === idx
                         ? 'bg-amber-400 text-stone-950 shadow-sm'
                         : 'text-stone-300 hover:text-white'
                     }`}
                   >
-                    {label}
+                    <span className="sm:hidden">{item.short}</span>
+                    <span className="hidden sm:inline">{item.en}</span>
                   </button>
                 ))}
               </div>
@@ -257,7 +264,7 @@ export default function HomePage() {
       </section>
 
       {/* 3. Product Catalog Grid (Only 2 Categories: Oil & Ghee) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="products">
+      <section className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8" id="products">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 text-center md:text-left">
           <div>
             <span className="text-xs font-bold tracking-widest text-red-700 uppercase bg-red-50 px-3 py-1 rounded-full border border-red-200 inline-block">
@@ -272,12 +279,12 @@ export default function HomePage() {
           </div>
 
           {/* Category Tabs */}
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
                   selectedCategory === cat.id
                     ? 'bg-red-700 text-white shadow-sm'
                     : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
@@ -289,8 +296,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+        {/* Products Grid: 2 columns on mobile */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-5 lg:gap-6">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -315,7 +322,7 @@ export default function HomePage() {
           {TESTIMONIALS.map((t) => (
             <div
               key={t.name}
-              className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow"
+              className="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-1 text-amber-500">
@@ -351,7 +358,7 @@ export default function HomePage() {
 
       {/* 5. Visit Krishna Nagar Store & Workshop */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-stone-900 text-white p-6 sm:p-10 border border-stone-800 shadow-xl">
+        <div className="rounded-2xl sm:rounded-3xl bg-stone-900 text-white p-4 sm:p-10 border border-stone-800 shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
               <span className="text-xs font-bold uppercase tracking-widest text-amber-400">

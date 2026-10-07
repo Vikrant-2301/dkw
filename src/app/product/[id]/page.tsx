@@ -244,39 +244,39 @@ export default function ProductDetailPage() {
 
           {/* Quantity & CTA Buttons */}
           <div className="space-y-3 pt-2">
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               {/* Quantity Counter */}
-              <div className="flex items-center justify-between border border-stone-300 rounded-xl px-4 py-2.5 bg-stone-50 w-full sm:w-36 h-12">
+              <div className="flex items-center justify-between border border-stone-300 rounded-xl px-2.5 sm:px-4 py-2 bg-stone-50 w-24 sm:w-36 h-11 sm:h-12 flex-shrink-0">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="text-stone-600 hover:text-stone-900 p-1 cursor-pointer"
+                  className="text-stone-600 hover:text-stone-900 p-0.5 cursor-pointer"
                   aria-label="Decrease quantity"
                 >
-                  <FiMinus className="w-4 h-4" />
+                  <FiMinus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
-                <span className="font-bold text-sm text-stone-900">{quantity}</span>
+                <span className="font-bold text-xs sm:text-sm text-stone-900">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="text-stone-600 hover:text-stone-900 p-1 cursor-pointer"
+                  className="text-stone-600 hover:text-stone-900 p-0.5 cursor-pointer"
                   aria-label="Increase quantity"
                 >
-                  <FiPlus className="w-4 h-4" />
+                  <FiPlus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
               </div>
 
               {/* Add to Cart Button */}
               <button
                 onClick={handleAddToCart}
-                className="flex-1 h-12 px-6 rounded-xl bg-red-700 hover:bg-red-800 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-red-700/20 transition-all flex items-center justify-center gap-2 hover:scale-[1.01] cursor-pointer"
+                className="flex-1 h-11 sm:h-12 px-2.5 sm:px-6 rounded-xl bg-red-700 hover:bg-red-800 text-white font-extrabold text-[11px] sm:text-sm uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
               >
-                <FiShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>{addedMessage ? 'Added to Basket ✓' : 'Add to Basket'}</span>
+                <FiShoppingBag className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+                <span>{addedMessage ? 'Added ✓' : 'Add to Basket'}</span>
               </button>
 
               {/* Buy Now Button */}
               <button
                 onClick={handleBuyNow}
-                className="h-12 px-6 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-md transition-all cursor-pointer"
+                className="h-11 sm:h-12 px-3 sm:px-6 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-black text-[11px] sm:text-sm uppercase tracking-wider shadow-md transition-all cursor-pointer flex-shrink-0"
               >
                 Buy Now
               </button>
@@ -387,7 +387,7 @@ export default function ProductDetailPage() {
         <h2 className="text-2xl font-extrabold text-stone-900 font-serif">
           You May Also Like
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
           {relatedProducts.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

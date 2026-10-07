@@ -30,7 +30,7 @@ export default function ContactPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Header */}
-      <div className="rounded-3xl bg-gradient-to-r from-stone-900 via-stone-850 to-red-950 text-white p-8 sm:p-12 shadow-xl border border-stone-800 text-center max-w-4xl mx-auto">
+      <div className="rounded-3xl bg-gradient-to-r from-stone-900 via-stone-850 to-red-950 text-white p-5 sm:p-12 shadow-xl border border-stone-800 text-center max-w-4xl mx-auto">
         <span className="text-xs font-bold uppercase tracking-widest text-amber-300">
           Visit Us In Delhi NCR
         </span>
@@ -48,7 +48,7 @@ export default function ContactPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         {/* Left Column: Direct Info Cards */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs space-y-6">
+          <div className="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-xs space-y-6">
             <h2 className="text-xl font-bold text-stone-900 border-b border-stone-100 pb-3">
               Store &amp; Workshop Details
             </h2>
@@ -143,7 +143,7 @@ export default function ContactPage() {
         </div>
 
         {/* Right Column: Contact Form */}
-        <div className="lg:col-span-7 bg-white p-8 rounded-2xl border border-stone-200 shadow-xs space-y-6">
+        <div className="lg:col-span-7 bg-white p-4 sm:p-8 rounded-2xl border border-stone-200 shadow-xs space-y-6">
           <div className="border-b border-stone-100 pb-3">
             <h2 className="text-xl font-bold text-stone-900">Send Us a Message</h2>
             <p className="text-xs text-stone-500 mt-0.5">

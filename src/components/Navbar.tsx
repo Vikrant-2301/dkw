@@ -55,37 +55,37 @@ export const Navbar: React.FC = () => {
   return (
     <>
       {/* Top Banner with Hindi Tagline & Call Support */}
-      <div className="bg-gradient-to-r from-red-950 via-stone-900 to-red-950 text-amber-100 text-xs py-2 px-4 border-b border-amber-500/20">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div className="bg-gradient-to-r from-red-950 via-stone-900 to-red-950 text-amber-100 text-[10px] sm:text-xs py-1.5 sm:py-2 px-2.5 sm:px-4 border-b border-amber-500/20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           {/* Brand Tagline */}
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse flex-shrink-0" />
-            <span className="font-bold tracking-wide text-amber-200">
+          <div className="flex items-center gap-1.5 min-w-0 flex-1">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse flex-shrink-0" />
+            <span className="font-bold tracking-wide text-amber-200 truncate">
               आँखों के सामने निकलता भरोसे से बिकता है
             </span>
             <span className="hidden md:inline text-amber-400/50">•</span>
             <span className="hidden md:inline text-stone-300 font-medium">
-              100% Sortex Rajasthan Mustard • Free Delivery up to 15km (15km फ्री डिलीवरी)
+              100% Sortex Rajasthan Mustard • Free Delivery up to 15km
             </span>
           </div>
 
           {/* Quick Contacts */}
-          <div className="flex items-center gap-3.5 text-xs text-stone-300">
+          <div className="flex items-center gap-2 sm:gap-3.5 text-[10px] sm:text-xs text-stone-300 flex-shrink-0">
             <a
               href="tel:9971207645"
-              className="flex items-center gap-1.5 hover:text-amber-300 font-semibold transition-colors"
+              className="flex items-center gap-1 hover:text-amber-300 font-semibold transition-colors"
             >
-              <FiPhone className="text-amber-400 w-3.5 h-3.5" />
+              <FiPhone className="text-amber-400 w-3 h-3 sm:w-3.5 sm:h-3.5" />
               <span>9971207645</span>
             </a>
-            <span className="text-stone-600">|</span>
+            <span className="text-stone-600 hidden xs:inline">|</span>
             <a
               href="https://wa.me/919971207645"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-green-400 hover:text-green-300 font-semibold transition-colors"
+              className="hidden xs:flex items-center gap-1 text-green-400 hover:text-green-300 font-semibold transition-colors"
             >
-              <FaWhatsapp className="text-sm" />
+              <FaWhatsapp className="text-xs sm:text-sm" />
               <span className="hidden sm:inline">WhatsApp</span>
             </a>
             <span className="text-stone-600 hidden lg:inline">|</span>
@@ -105,13 +105,13 @@ export const Navbar: React.FC = () => {
       {/* Main Sticky Navigation Bar */}
       <header
         className={`sticky top-0 z-40 transition-all duration-200 bg-white/95 backdrop-blur-md border-b border-stone-200/90 ${
-          scrolled ? 'shadow-md py-2.5' : 'py-3'
+          scrolled ? 'shadow-md py-2 sm:py-2.5' : 'py-2 sm:py-3'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-2 sm:gap-4">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="min-w-0 flex-1 sm:flex-initial">
               <DKWLogo size="md" />
             </div>
 
@@ -136,35 +136,35 @@ export const Navbar: React.FC = () => {
             </nav>
 
             {/* Right Actions */}
-            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <div className="flex items-center gap-1 sm:gap-2.5 flex-shrink-0">
               {/* Search Trigger */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-2 sm:p-2.5 rounded-full text-stone-600 hover:text-red-700 hover:bg-stone-100 transition-colors cursor-pointer"
+                className="p-1.5 sm:p-2.5 rounded-full text-stone-600 hover:text-red-700 hover:bg-stone-100 transition-colors cursor-pointer"
                 aria-label="Search catalog"
               >
-                <FiSearch className="w-5 h-5" />
+                <FiSearch className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
               {/* Cart Drawer Trigger */}
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-red-50 hover:bg-red-100 text-stone-800 border border-red-200/80 transition-all group shadow-2xs cursor-pointer"
+                className="flex items-center gap-1.5 px-2 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-red-50 hover:bg-red-100 text-stone-800 border border-red-200/80 transition-all group shadow-2xs cursor-pointer"
                 aria-label="View shopping basket"
               >
                 <div className="relative">
                   <FiShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-red-700 group-hover:scale-110 transition-transform" />
                   {totalItems > 0 && (
-                    <span className="absolute -top-2.5 -right-2.5 bg-red-600 text-white font-extrabold text-[10px] w-4.5 h-4.5 rounded-full flex items-center justify-center shadow">
+                    <span className="absolute -top-2 -right-2 bg-red-600 text-white font-extrabold text-[9px] sm:text-[10px] w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full flex items-center justify-center shadow">
                       {totalItems}
                     </span>
                   )}
                 </div>
-                <span className="font-bold text-xs uppercase tracking-wider text-stone-700">
+                <span className="hidden sm:inline font-bold text-xs uppercase tracking-wider text-stone-700">
                   Cart
                 </span>
                 {subtotal > 0 && (
-                  <span className="hidden sm:inline text-xs font-extrabold text-red-700 pl-1 border-l border-red-200">
+                  <span className="hidden md:inline text-xs font-extrabold text-red-700 pl-1 border-l border-red-200">
                     ₹{subtotal}
                   </span>
                 )}
@@ -173,10 +173,10 @@ export const Navbar: React.FC = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg text-stone-700 hover:bg-stone-100 focus:outline-none"
+                className="lg:hidden p-1.5 sm:p-2 rounded-lg text-stone-700 hover:bg-stone-100 focus:outline-none"
                 aria-label="Toggle navigation menu"
               >
-                {mobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+                {mobileMenuOpen ? <FiX className="w-5 h-5 sm:w-6 sm:h-6" /> : <FiMenu className="w-5 h-5 sm:w-6 sm:h-6" />}
               </button>
             </div>
           </div>

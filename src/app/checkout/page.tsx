@@ -191,7 +191,7 @@ export default function CheckoutPage() {
         {/* Left Column: Customer and Shipping Form */}
         <div className="lg:col-span-7 space-y-6">
           {/* 1. Contact Information */}
-          <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs space-y-4">
+          <div className="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-xs space-y-4">
             <h2 className="text-base font-bold text-stone-900 border-b border-stone-100 pb-3 flex items-center gap-2">
               <span className="w-6 h-6 rounded-full bg-red-700 text-white text-xs flex items-center justify-center">1</span>
               <span>Contact &amp; Delivery Details</span>
@@ -298,7 +298,7 @@ export default function CheckoutPage() {
           </div>
 
           {/* 2. Payment Method */}
-          <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs space-y-4">
+          <div className="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-xs space-y-4">
             <h2 className="text-base font-bold text-stone-900 border-b border-stone-100 pb-3 flex items-center gap-2">
               <span className="w-6 h-6 rounded-full bg-red-700 text-white text-xs flex items-center justify-center">2</span>
               <span>Select Payment Option</span>
@@ -364,7 +364,7 @@ export default function CheckoutPage() {
 
         {/* Right Column: Order Summary */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs space-y-4">
+          <div className="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-xs space-y-4">
             <h2 className="text-base font-bold text-stone-900 border-b border-stone-100 pb-3">
               Order Summary ({cart.reduce((sum, item) => sum + item.quantity, 0)} items)
             </h2>

@@ -22,44 +22,44 @@ export const Footer: React.FC = () => {
       <footer className="bg-stone-950 text-stone-300 pt-12 pb-8 border-t border-stone-800 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 4 Trust Highlights */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pb-10 border-b border-stone-800">
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
-              <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
-                <FiCheckCircle className="w-5 h-5" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6 pb-8 sm:pb-10 border-b border-stone-800">
+            <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+                <FiCheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div>
-                <h4 className="font-bold text-white text-xs sm:text-sm">Live Extraction</h4>
-                <p className="text-[11px] text-stone-400">आँखों के सामने ताज़ा पिराई</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
-              <div className="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center flex-shrink-0">
-                <FiShield className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="font-bold text-white text-xs sm:text-sm">Rajasthan Sortex</h4>
-                <p className="text-[11px] text-stone-400">100% साफ छाँटी हुई सरसों</p>
+              <div className="min-w-0">
+                <h4 className="font-bold text-white text-xs sm:text-sm truncate">Live Extraction</h4>
+                <p className="text-[10px] sm:text-[11px] text-stone-400 truncate">आँखों के सामने पिराई</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
-              <div className="w-10 h-10 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center flex-shrink-0">
-                <FiTruck className="w-5 h-5" />
+            <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center flex-shrink-0">
+                <FiShield className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div>
-                <h4 className="font-bold text-white text-xs sm:text-sm">Free Home Delivery</h4>
-                <p className="text-[11px] text-stone-400">Same-day delivery up to 15km</p>
+              <div className="min-w-0">
+                <h4 className="font-bold text-white text-xs sm:text-sm truncate">Rajasthan Sortex</h4>
+                <p className="text-[10px] sm:text-[11px] text-stone-400 truncate">100% साफ छाँटी सरसों</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
-              <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
-                <FiHeart className="w-5 h-5" />
+            <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center flex-shrink-0">
+                <FiTruck className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div>
-                <h4 className="font-bold text-white text-xs sm:text-sm">Vedic Bilona Ghee</h4>
-                <p className="text-[11px] text-stone-400">गाय व भैंस का मिट्टी की हांड़ी का घी</p>
+              <div className="min-w-0">
+                <h4 className="font-bold text-white text-xs sm:text-sm truncate">Free Delivery</h4>
+                <p className="text-[10px] sm:text-[11px] text-stone-400 truncate">Same-day up to 15km</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-stone-900/40 border border-stone-800/60">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+                <FiHeart className="w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+              <div className="min-w-0">
+                <h4 className="font-bold text-white text-xs sm:text-sm truncate">Vedic Bilona Ghee</h4>
+                <p className="text-[10px] sm:text-[11px] text-stone-400 truncate">मिट्टी की हांड़ी का बिलोना घी</p>
               </div>
             </div>
           </div>
@@ -251,7 +251,7 @@ export const Footer: React.FC = () => {
         href="https://wa.me/919971207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order%20pure%20cold-pressed%20oil%20and%20bilona%20ghee."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+        className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-sm p-3 sm:px-4 sm:py-3 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
         aria-label="Chat on WhatsApp with Delhi Kolhu Wale"
       >
         <FaWhatsapp className="w-5 h-5" />

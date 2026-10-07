@@ -18,7 +18,7 @@ export default function AboutPage() {
   return (
     <div className="space-y-16 pb-16">
       {/* Hero Banner */}
-      <section className="bg-gradient-to-r from-stone-900 via-stone-850 to-red-950 text-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-r from-stone-900 via-stone-850 to-red-950 text-white py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-4">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-300 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15">
             Delhi Kolhu Wale (DKW) Heritage

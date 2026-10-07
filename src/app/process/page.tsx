@@ -15,15 +15,15 @@ export default function ProcessPage() {
   return (
     <div className="space-y-14 pb-16">
       {/* Header Hero */}
-      <section className="relative bg-gradient-to-r from-stone-900 via-stone-850 to-red-950 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-r from-stone-900 via-stone-850 to-red-950 text-white py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-widest">
             100% Honest Craftsmanship • Zero Chemicals
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-serif">
+          <h1 className="text-2xl sm:text-5xl font-black font-serif leading-tight">
             Our Traditional Process: Kolhu, Kacchi Ghani &amp; Bilona Ghee
           </h1>
-          <p className="text-xl sm:text-2xl text-amber-300 font-bold font-sans">
+          <p className="text-lg sm:text-2xl text-amber-300 font-bold font-sans">
             आँखों के सामने निकलता, भरोसे से बिकता है
           </p>
           <p className="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
