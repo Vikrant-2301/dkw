@@ -150,7 +150,7 @@ export default function AboutPage() {
             सभी 17 उत्पाद देखें (Shop)
           </Link>
           <a
-            href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+            href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-sm"

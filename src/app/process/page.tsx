@@ -151,7 +151,7 @@ export default function ProcessPage() {
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+              href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow"

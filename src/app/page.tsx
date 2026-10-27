@@ -114,7 +114,7 @@ export default function HomePage() {
 
                 <div className="grid grid-cols-2 gap-2">
                   <a
-                    href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+                    href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 px-3 py-2.5 sm:py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-all text-center"
@@ -251,7 +251,7 @@ export default function HomePage() {
               <span>Call Us</span>
             </a>
             <a
-              href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+              href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 text-xs font-bold whitespace-nowrap flex items-center gap-1.5"
@@ -388,7 +388,7 @@ export default function HomePage() {
 
               <div className="flex flex-wrap items-center gap-3 pt-3">
                 <a
-                  href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+                  href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs uppercase tracking-wider transition-colors"

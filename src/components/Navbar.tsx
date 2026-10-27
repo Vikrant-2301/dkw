@@ -95,7 +95,7 @@ export const Navbar: React.FC = () => {
             </a>
             <span className="text-stone-600 hidden lg:inline">|</span>
             <a
-              href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+              href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden lg:flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-medium"

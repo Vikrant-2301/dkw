@@ -315,7 +315,7 @@ export default function GrandOpeningPage() {
                 style={{ color: '#8B6914' }}
               >
                 <FiMapPin className="w-3 h-3 flex-shrink-0" />
-                <span>A1/10, Main Road, Krishna Nagar, Delhi – 110051</span>
+                <span>A1/10, Near Chhachi Building, Main Road, Krishna Nagar, Delhi – 110051</span>
               </p>
               <div
                 className="w-full h-52 sm:h-60 lg:h-full lg:flex-1 rounded-2xl overflow-hidden min-h-[180px]"
@@ -323,7 +323,7 @@ export default function GrandOpeningPage() {
               >
                 <iframe
                   title="DKW Delhi Kolhu Wale — Store Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.4!2d77.2735!3d28.6695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfcc800000001%3A0x1!2sA-1%2F10%2C+Main+Rd%2C+Krishna+Nagar%2C+Delhi%2C+110051!5e0!3m2!1sen!2sin!4v1698400000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.214479904321!2d77.27458617549646!3d28.66037297564757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd2523ae2e2b%3A0x5eaa96900853cafc!2sDELHI%20KOLHU%20WALE!5e0!3m2!1sen!2sin!4v1714000000000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0, display: 'block', width: '100%', height: '100%', minHeight: '180px' }}
@@ -333,7 +333,7 @@ export default function GrandOpeningPage() {
                 />
               </div>
               <a
-                href="https://share.google/PkZcgjWVlrPZnpVs6"
+                href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-bold transition-colors self-start hover:opacity-80 py-1"

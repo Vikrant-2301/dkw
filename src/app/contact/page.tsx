@@ -64,7 +64,7 @@ export default function ContactPage() {
                     A1/10, Main Road Krishna Nagar, Near Chhachi Building, Delhi - 110051
                   </p>
                   <a
-                    href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+                    href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-amber-800 hover:underline font-bold text-xs inline-block mt-1"
@@ -131,7 +131,7 @@ export default function ContactPage() {
 
             <div className="pt-2 border-t border-stone-100">
               <a
-                href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+                href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow"

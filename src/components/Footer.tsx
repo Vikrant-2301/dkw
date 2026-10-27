@@ -188,7 +188,7 @@ export const Footer: React.FC = () => {
                       A1/10, Main Road Krishna Nagar, Near Chhachi Building, Delhi - 110051
                     </span>
                     <a
-                      href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+                      href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-amber-400 hover:underline flex items-center gap-1 mt-1 font-semibold"
@@ -230,7 +230,7 @@ export const Footer: React.FC = () => {
               &copy; {new Date().getFullYear()} Delhi Kolhu Wale. A1/10 Krishna Nagar, Delhi-110051.
             </p>
             <div className="flex items-center gap-4 text-stone-400">
-              <a href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49" target="_blank" rel="noopener noreferrer" className="hover:text-amber-300 transition-colors">
+              <a href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7" target="_blank" rel="noopener noreferrer" className="hover:text-amber-300 transition-colors">
                 Google Maps
               </a>
               <span>•</span>

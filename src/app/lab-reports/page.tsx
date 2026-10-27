@@ -78,7 +78,7 @@ export default function LabReportsPage() {
             उत्पाद देखें (Shop)
           </Link>
           <a
-            href="https://maps.app.goo.gl/FnANhHdWnkR1vUZ49"
+            href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-stone-950 rounded-xl text-xs font-bold"
