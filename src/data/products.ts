@@ -578,6 +578,6 @@ export const FAQS = [
   },
   {
     q: 'What are the delivery terms and shop timings?',
-    a: 'Our store is open all 7 days from 9:00 AM to 11:00 PM. We provide Same-Day Free Home Delivery within 15 km in Delhi NCR on all orders. You can order online, call us, or WhatsApp on 9971207645.'
+    a: 'Our store is open all 7 days from 9:00 AM to 11:00 PM. We provide Same-Day Free Home Delivery within 15 km in Delhi NCR on all orders. You can order online, call us, or WhatsApp on 9599207645.'
   }
 ];

@@ -121,7 +121,7 @@ export default function CheckoutPage() {
           {/* Action CTAs */}
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <a
-              href={`https://wa.me/919971207645?text=Hello%20DKW,%20I%20placed%20order%20${orderId}%20for%20Rs%20${total}.%20Please%20share%20tracking%20update.`}
+              href={`https://wa.me/919599207645?text=Hello%20DKW,%20I%20placed%20order%20${orderId}%20for%20Rs%20${total}.%20Please%20share%20tracking%20update.`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 py-3 px-6 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-sm shadow flex items-center justify-center gap-2 transition-all"
@@ -219,7 +219,7 @@ export default function CheckoutPage() {
                 <input
                   type="tel"
                   required
-                  placeholder="e.g. 9971207645"
+                  placeholder="e.g. 9599207645"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"

@@ -284,7 +284,7 @@ export default function ProductDetailPage() {
 
             {/* WhatsApp Quick Order Link */}
             <a
-              href={`https://wa.me/919971207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20would%20like%20to%20order%20${encodeURIComponent(
+              href={`https://wa.me/919599207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20would%20like%20to%20order%20${encodeURIComponent(
                 product.name
               )}%20(${selectedVolume.size})`}
               target="_blank"
@@ -292,7 +292,7 @@ export default function ProductDetailPage() {
               className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-green-50 hover:bg-green-100 text-green-800 font-bold text-xs sm:text-sm border border-green-200 transition-colors"
             >
               <FaWhatsapp className="text-base text-green-600" />
-              <span>Order via WhatsApp (+91 9971207645)</span>
+              <span>Order via WhatsApp (+91 9599207645)</span>
             </a>
           </div>
 

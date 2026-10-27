@@ -145,7 +145,7 @@ export default function ProcessPage() {
             <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs">
               <FiPhone className="text-red-700 w-5 h-5 mb-2" />
               <h4 className="font-bold text-sm text-stone-900">Helpline &amp; WhatsApp</h4>
-              <p className="text-xs text-stone-600 mt-1">+91 9971207645 (Same-day free delivery &lt;15km)</p>
+              <p className="text-xs text-stone-600 mt-1">+91 9599207645 (Same-day free delivery &lt;15km)</p>
             </div>
           </div>
 

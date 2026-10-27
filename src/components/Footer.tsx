@@ -204,8 +204,8 @@ export const Footer: React.FC = () => {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <FiPhone className="text-amber-400 w-4 h-4 flex-shrink-0" />
-                  <a href="tel:9971207645" className="hover:text-amber-300 font-semibold text-white">
-                    +91 9971207645
+                  <a href="tel:9599207645" className="hover:text-amber-300 font-semibold text-white">
+                    +91 9599207645
                   </a>
                 </li>
                 <li className="flex items-center gap-2.5">
@@ -234,11 +234,11 @@ export const Footer: React.FC = () => {
                 Google Maps
               </a>
               <span>•</span>
-              <a href="tel:9971207645" className="hover:text-stone-300 transition-colors">
-                Call: 9971207645
+              <a href="tel:9599207645" className="hover:text-stone-300 transition-colors">
+                Call: 9599207645
               </a>
               <span>•</span>
-              <a href="https://wa.me/919971207645" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
+              <a href="https://wa.me/919599207645" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
                 WhatsApp Order
               </a>
             </div>
@@ -248,7 +248,7 @@ export const Footer: React.FC = () => {
 
       {/* Floating WhatsApp Action Button */}
       <a
-        href="https://wa.me/919971207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order%20pure%20cold-pressed%20oil%20and%20bilona%20ghee."
+        href="https://wa.me/919599207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order%20pure%20cold-pressed%20oil%20and%20bilona%20ghee."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-xs sm:text-sm p-3 sm:px-4 sm:py-3 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"

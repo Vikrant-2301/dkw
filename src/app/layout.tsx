@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { CartDrawer } from "@/components/CartDrawer";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { SiteShell } from "@/components/SiteShell";
 
 export const metadata: Metadata = {
   title: "DKW - Delhi Kolhu Wale | 100% Pure Wood-Pressed Oils & Vedic Bilona Ghee",
@@ -42,13 +39,7 @@ export default function RootLayout({
     <html lang="en" className="h-full scroll-smooth scroll-pt-28">
       <body className="min-h-full flex flex-col bg-stone-50 text-stone-900 font-sans antialiased selection:bg-amber-300 selection:text-stone-900">
         <CartProvider>
-          <ScrollToTop />
-          <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
-          <CartDrawer />
-          <Footer />
+          <SiteShell>{children}</SiteShell>
         </CartProvider>
       </body>
     </html>

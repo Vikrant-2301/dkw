@@ -47,6 +47,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/shop', label: 'Shop' },
+    { href: '/grand-opening', label: '🎊 Grand Opening' },
     { href: '/process', label: 'Our Process' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact & Visit' },
@@ -67,20 +68,24 @@ export const Navbar: React.FC = () => {
             <span className="hidden md:inline text-stone-300 font-medium">
               100% Sortex Rajasthan Mustard • Free Delivery up to 15km
             </span>
+            <a href="/grand-opening" className="hidden lg:inline-flex items-center gap-1 ml-2 px-2 py-0.5 rounded-full bg-amber-500/25 border border-amber-400/40 text-amber-300 font-bold text-[9px] sm:text-[10px] tracking-wider hover:bg-amber-500/40 transition-colors">
+              <span className="w-1 h-1 rounded-full bg-amber-400 animate-ping inline-block" />
+              🎊 Grand Opening: 1 Nov
+            </a>
           </div>
 
           {/* Quick Contacts */}
           <div className="flex items-center gap-2 sm:gap-3.5 text-[10px] sm:text-xs text-stone-300 flex-shrink-0">
             <a
-              href="tel:9971207645"
+              href="tel:9599207645"
               className="flex items-center gap-1 hover:text-amber-300 font-semibold transition-colors"
             >
               <FiPhone className="text-amber-400 w-3 h-3 sm:w-3.5 sm:h-3.5" />
-              <span>9971207645</span>
+              <span>9599207645</span>
             </a>
             <span className="text-stone-600 hidden xs:inline">|</span>
             <a
-              href="https://wa.me/919971207645"
+              href="https://wa.me/919599207645"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden xs:flex items-center gap-1 text-green-400 hover:text-green-300 font-semibold transition-colors"
@@ -204,14 +209,14 @@ export const Navbar: React.FC = () => {
 
             <div className="pt-3 border-t border-stone-100 flex flex-col gap-2">
               <a
-                href="tel:9971207645"
+                href="tel:9599207645"
                 className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-stone-100 text-stone-800 font-bold text-xs"
               >
                 <FiPhone className="text-red-700" />
-                <span>Call Helpline: +91 9971207645</span>
+                <span>Call Helpline: +91 9599207645</span>
               </a>
               <a
-                href="https://wa.me/919971207645"
+                href="https://wa.me/919599207645"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-green-600 text-white font-bold text-xs shadow"

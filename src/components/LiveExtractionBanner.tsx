@@ -76,11 +76,11 @@ export const LiveExtractionBanner: React.FC = () => {
               </button>
 
               <a
-                href="tel:9971207645"
+                href="tel:9599207645"
                 className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-all"
               >
                 <FiPhone className="text-amber-400" />
-                <span>Call Us: 9971207645</span>
+                <span>Call Us: 9599207645</span>
               </a>
             </div>
           </div>
@@ -137,7 +137,7 @@ export const LiveExtractionBanner: React.FC = () => {
                 </div>
                 <h4 className="text-2xl font-bold text-stone-900">Visit Scheduled!</h4>
                 <p className="text-sm text-stone-600">
-                  Thank you, <strong>{formData.name || 'Friend'}</strong>. Our Delhi workshop manager will reach you at <strong>{formData.phone || '+91 9971207645'}</strong> to confirm your slot and share Google Maps location!
+                  Thank you, <strong>{formData.name || 'Friend'}</strong>. Our Delhi workshop manager will reach you at <strong>{formData.phone || '+91 9599207645'}</strong> to confirm your slot and share Google Maps location!
                 </p>
                 <button
                   onClick={() => setModalOpen(false)}
@@ -169,7 +169,7 @@ export const LiveExtractionBanner: React.FC = () => {
                   <input
                     type="tel"
                     required
-                    placeholder="e.g. 9971207645"
+                    placeholder="e.g. 9599207645"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"

@@ -30,11 +30,11 @@ export const OriginalBannerShowcase: React.FC = () => {
           </div>
 
           <a
-            href="tel:9971207645"
+            href="tel:9599207645"
             className="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-stone-900 font-black text-xs sm:text-sm px-4 py-1.5 rounded-full transition-all shadow-md group"
           >
             <FiPhone className="group-hover:rotate-12 transition-transform" />
-            <span>M.: 9971207645</span>
+            <span>M.: 9599207645</span>
           </a>
         </div>
 

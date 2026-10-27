@@ -124,7 +124,7 @@ export default function HomePage() {
                   </a>
 
                   <a
-                    href="https://wa.me/919971207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order%20pure%20cold%20pressed%20oil%20and%20ghee"
+                    href="https://wa.me/919599207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order%20pure%20cold%20pressed%20oil%20and%20ghee"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 px-3 py-2.5 sm:py-3.5 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-xs shadow-md transition-all text-center"
@@ -237,14 +237,14 @@ export default function HomePage() {
                 Same-Day Free Home Delivery up to 15 km in Delhi NCR!
               </h4>
               <p className="text-xs text-stone-600 mt-0.5">
-                15 किमी तक उसी दिन मुफ्त होम डिलीवरी • Open Daily: 9:00 AM – 11:00 PM • Helpline: 9971207645
+                15 किमी तक उसी दिन मुफ्त होम डिलीवरी • Open Daily: 9:00 AM – 11:00 PM • Helpline: 9599207645
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <a
-              href="tel:9971207645"
+              href="tel:9599207645"
               className="px-4 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold whitespace-nowrap flex items-center gap-1.5"
             >
               <FiPhone className="text-amber-400" />
@@ -382,7 +382,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <FiPhone className="text-amber-400 w-4 h-4 flex-shrink-0" />
-                  <span>Order Helpline: +91 9971207645 (Call / WhatsApp)</span>
+                  <span>Order Helpline: +91 9599207645 (Call / WhatsApp)</span>
                 </div>
               </div>
 
@@ -399,11 +399,11 @@ export default function HomePage() {
                 </a>
 
                 <a
-                  href="tel:9971207645"
+                  href="tel:9599207645"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-colors"
                 >
                   <FiPhone className="text-amber-400" />
-                  <span>Call: 9971207645</span>
+                  <span>Call: 9599207645</span>
                 </a>
               </div>
             </div>
@@ -482,7 +482,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <a
-                href="https://wa.me/919971207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order"
+                href="https://wa.me/919599207645?text=Hello%20Delhi%20Kolhu%20Wale,%20I%20want%20to%20order"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow"
@@ -491,11 +491,11 @@ export default function HomePage() {
                 <span>Order on WhatsApp</span>
               </a>
               <a
-                href="tel:9971207645"
+                href="tel:9599207645"
                 className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-all"
               >
                 <FiPhone className="text-amber-400" />
-                <span>Call Helpline: 9971207645</span>
+                <span>Call Helpline: 9599207645</span>
               </a>
             </div>
           </div>

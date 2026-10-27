@@ -80,8 +80,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-stone-900">Phone Helpline</h4>
-                  <a href="tel:9971207645" className="text-red-700 font-extrabold hover:underline">
-                    +91 9971207645
+                  <a href="tel:9599207645" className="text-red-700 font-extrabold hover:underline">
+                    +91 9599207645
                   </a>
                 </div>
               </div>
@@ -93,12 +93,12 @@ export default function ContactPage() {
                 <div>
                   <h4 className="font-bold text-stone-900">WhatsApp Order Support</h4>
                   <a
-                    href="https://wa.me/919971207645"
+                    href="https://wa.me/919599207645"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-700 font-bold hover:underline"
                   >
-                    +91 9971207645 (Chat Now)
+                    +91 9599207645 (Chat Now)
                   </a>
                 </div>
               </div>
@@ -191,7 +191,7 @@ export default function ContactPage() {
                   <input
                     type="tel"
                     required
-                    placeholder="e.g. 9971207645"
+                    placeholder="e.g. 9599207645"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
