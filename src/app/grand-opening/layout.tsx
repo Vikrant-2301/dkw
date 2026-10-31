@@ -11,5 +11,15 @@ export default function GrandOpeningLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600..900;1,600..900&family=Yatra+One&display=swap"
+        rel="stylesheet"
+      />
+      {children}
+    </>
+  );
 }

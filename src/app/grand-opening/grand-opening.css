@@ -1,0 +1,1482 @@
+:root {
+  --dkw-maroon: #5a171d;
+  --dkw-maroon-deep: #2e0b10;
+  --dkw-red: #8c2425;
+  --dkw-saffron: #f4a51c;
+  --dkw-mustard: #e9b72c;
+  --dkw-cream: #fff5dc;
+  --dkw-paper: #f8edcf;
+  --dkw-ink: #321b12;
+  --dkw-green: #536b37;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--dkw-maroon-deep);
+}
+
+.dkw-page {
+  background: var(--dkw-cream);
+  color: var(--dkw-ink);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.dkw-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dkw-hindi {
+  font-family: 'Yatra One', 'Noto Sans Devanagari', sans-serif;
+}
+
+.dkw-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ============================================================
+   GRAND OPENING INTRO ANIMATION OVERLAY
+   ============================================================ */
+.dkw-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  overflow: hidden;
+  color: #fff0c7;
+  background: #1f0609;
+  animation: dkw-overlay-in 0.45s ease both;
+}
+
+.dkw-intro-overlay.is-leaving {
+  animation: dkw-overlay-out 0.85s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+.dkw-intro-curtain {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, #7a2228 0%, #3e1115 50%, #1a0406 100%);
+}
+
+.dkw-intro-curtain:before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1.5px solid rgba(255, 205, 100, 0.6);
+}
+
+.dkw-intro-curtain:after {
+  content: '';
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(255, 205, 100, 0.25);
+}
+
+.dkw-intro-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 580px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: dkw-invite-rise 0.8s 0.15s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.dkw-intro-seal {
+  width: 104px;
+  height: 104px;
+  padding: 6px;
+  border-radius: 50%;
+  background: #fff8e7;
+  box-shadow: 0 0 0 3px #f4c052, 0 0 0 10px rgba(244, 192, 82, 0.18), 0 0 50px rgba(255, 192, 48, 0.35);
+  animation: dkw-seal-pop 0.9s 0.2s cubic-bezier(0.16, 1.4, 0.4, 1) both;
+}
+
+.dkw-intro-seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.dkw-intro-kicker {
+  margin-top: 22px;
+  color: #f8ce6a;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  font-weight: 900;
+  animation: dkw-letter-reveal 0.9s 0.4s both;
+}
+
+.dkw-intro-title {
+  font-family: 'Yatra One', serif;
+  font-size: clamp(36px, 6.2vw, 64px);
+  line-height: 1.18;
+  margin: 12px 0 8px;
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  animation: dkw-invite-rise 0.9s 0.55s both;
+}
+
+.dkw-intro-title span {
+  display: block;
+  color: #ffcc4b;
+}
+
+.dkw-intro-copy {
+  max-width: 440px;
+  margin: 6px auto 0;
+  color: rgba(255, 240, 199, 0.85);
+  font-size: 13.5px;
+  line-height: 1.8;
+  animation: dkw-invite-rise 0.9s 0.7s both;
+}
+
+.dkw-intro-date {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  color: #ffdf8a;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  animation: dkw-invite-rise 0.9s 0.85s both;
+}
+
+.dkw-intro-date:before,
+.dkw-intro-date:after {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background: #c99736;
+}
+
+.dkw-intro-open {
+  margin-top: 22px;
+  border: 1.5px solid #f3c15b;
+  border-radius: 999px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #ffe18a, #e8a51c);
+  color: #421015;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  animation: dkw-invite-rise 0.9s 1s both;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dkw-intro-open:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes dkw-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dkw-overlay-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes dkw-seal-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-20deg);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.1) rotate(4deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes dkw-invite-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes dkw-letter-reveal {
+  from {
+    opacity: 0;
+    letter-spacing: 0.7em;
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: 0.32em;
+  }
+}
+
+/* ============================================================
+   TOPLINE ANNOUNCEMENT RIBBON
+   ============================================================ */
+.dkw-topline {
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: var(--dkw-maroon-deep);
+  color: #ffe7a3;
+  padding: 0 16px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(244, 165, 28, 0.22);
+  position: relative;
+  z-index: 10;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dkw-topline .dot {
+  color: var(--dkw-saffron);
+  font-size: 14px;
+}
+
+/* ============================================================
+   HERO SECTION: EXPANSIVE, PROMINENT & MAJESTIC
+   ============================================================ */
+.dkw-hero {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 36%, rgba(255, 199, 75, 0.22), transparent 45%),
+    radial-gradient(circle at 85% 65%, rgba(140, 36, 37, 0.25) 0%, transparent 40%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 9px),
+    linear-gradient(175deg, #420f13 0%, var(--dkw-maroon) 50%, #2b080c 100%);
+  color: var(--dkw-cream);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .dkw-hero {
+    min-height: calc(100vh - 34px);
+    min-height: calc(100dvh - 34px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(20px, 2.5vw, 36px) clamp(24px, 4.5vw, 72px) clamp(28px, 3vw, 44px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .dkw-hero {
+    min-height: 100vh;
+    padding: 24px clamp(16px, 4vw, 36px) 44px;
+    gap: 28px;
+  }
+}
+
+.dkw-hero:before,
+.dkw-hero:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(255, 207, 97, 0.34);
+  inset: 12px;
+}
+
+.dkw-hero:after {
+  inset: 18px;
+  border-color: rgba(255, 207, 97, 0.14);
+}
+
+.dkw-hero-glow {
+  position: absolute;
+  z-index: -1;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(248, 176, 41, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+/* Thematic Asset 1: Pure Golden Splash behind headline */
+.dkw-hero-oil-splash {
+  position: absolute;
+  width: min(44vw, 540px);
+  height: min(44vw, 540px);
+  object-fit: contain;
+  left: -90px;
+  top: 20%;
+  opacity: 0.18;
+  transform: rotate(-18deg);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+/* Header Bar: Brand on Left, Visit Pill on Right */
+.dkw-hero-header {
+  max-width: 1380px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.dkw-hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dkw-hero-brand-logo {
+  background: #fff;
+  border-radius: 50%;
+  width: clamp(56px, 4.8vw, 70px);
+  height: clamp(56px, 4.8vw, 70px);
+  padding: 5px;
+  box-shadow: 0 0 0 2.5px #e9b72c, 0 0 0 7px rgba(233, 183, 44, 0.22);
+  flex-shrink: 0;
+}
+
+.dkw-hero-brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dkw-hero-brand-name {
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  font-size: clamp(19px, 1.7vw, 24px);
+  line-height: 1.15;
+  color: #fff6e0;
+}
+
+.dkw-hero-brand-sub {
+  color: #f4c75f;
+  font-size: clamp(12px, 0.95vw, 13.5px);
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+
+.dkw-nav-pill {
+  border: 1.5px solid rgba(255, 221, 146, 0.75);
+  border-radius: 999px;
+  padding: 10px 24px;
+  background: rgba(255, 221, 146, 0.12);
+  color: #ffe5a0 !important;
+  font-size: clamp(12px, 0.95vw, 13.5px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.dkw-nav-pill:hover {
+  background: #e9b72c;
+  color: var(--dkw-maroon-deep) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(233, 183, 44, 0.42);
+}
+
+/* Hero Content Grid: Generous Scaling */
+.dkw-hero-content {
+  max-width: 1380px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.95fr);
+  align-items: center;
+  gap: clamp(32px, 4.8vw, 70px);
+  position: relative;
+  z-index: 2;
+  padding: clamp(18px, 2.8vh, 42px) 0;
+}
+
+/* Left Hero Copy */
+.dkw-hero-copy {
+  position: relative;
+  padding: 4px 0;
+}
+
+.dkw-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #f5c75d;
+  font-size: clamp(12px, 0.95vw, 14px);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1.5px solid rgba(245, 199, 93, 0.48);
+  background: rgba(245, 199, 93, 0.12);
+  border-radius: 999px;
+  padding: 8px 18px;
+}
+
+.dkw-eyebrow svg {
+  color: #f4a51c;
+  font-size: 14px;
+}
+
+.dkw-hero h1 {
+  font-family: 'Yatra One', 'Noto Sans Devanagari', sans-serif;
+  font-size: clamp(42px, 4.6vw, 68px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  margin: 18px 0 16px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.dkw-hero h1 em {
+  color: #ffc83d;
+  font-style: normal;
+  display: inline-block;
+  text-shadow: 0 0 28px rgba(255, 200, 61, 0.35);
+}
+
+.dkw-hero-description {
+  color: rgba(255, 245, 220, 0.88);
+  font-size: clamp(16px, 1.3vw, 19.5px);
+  line-height: 1.82;
+  max-width: 630px;
+  margin: 0;
+}
+
+.dkw-hero-description strong {
+  color: #ffd86b;
+}
+
+.dkw-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.dkw-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 999px;
+  min-height: 52px;
+  padding: 13px 26px;
+  font-size: clamp(13.5px, 1.05vw, 15px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dkw-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.dkw-btn-gold {
+  background: linear-gradient(135deg, #ffd86b 0%, #e7a61c 100%);
+  color: #3e1711 !important;
+  border: 1.5px solid #fff;
+  box-shadow: 0 6px 20px rgba(231, 166, 28, 0.4);
+}
+
+.dkw-btn-outline {
+  border: 1.5px solid rgba(255, 238, 192, 0.55);
+  color: #fff4d6 !important;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dkw-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #ffd86b;
+}
+
+.dkw-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 22px;
+  color: #efd9a8;
+  font-size: clamp(12px, 0.95vw, 13.5px);
+  font-weight: 600;
+}
+
+.dkw-trust-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dkw-trust-row svg {
+  color: #eab632;
+  font-size: 15px;
+}
+
+/* Right Column: Royal Grand Opening Invitation Card */
+.dkw-invitation {
+  position: relative;
+  padding: clamp(16px, 2vw, 22px);
+  border: 2px solid #e0b656;
+  border-radius: 18px;
+  background: linear-gradient(155deg, #fff4d8 0%, #f4d99a 100%);
+  color: var(--dkw-maroon);
+  box-shadow: 0 24px 70px rgba(18, 0, 0, 0.45), 0 0 45px rgba(244, 165, 28, 0.24);
+  transform: rotate(0.8deg);
+  max-width: 490px;
+  width: 100%;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dkw-invitation:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 28px 80px rgba(18, 0, 0, 0.5), 0 0 55px rgba(244, 165, 28, 0.3);
+}
+
+.dkw-invitation-inner {
+  position: relative;
+  padding: clamp(24px, 2.8vw, 36px) clamp(20px, 2.4vw, 32px);
+  text-align: center;
+  border: 1.5px solid rgba(115, 40, 25, 0.44);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.85), transparent 55%),
+    repeating-linear-gradient(0deg, rgba(117, 57, 21, 0.025) 0 1px, transparent 1px 5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dkw-invitation-inner:before,
+.dkw-invitation-inner:after {
+  content: '✦';
+  position: absolute;
+  color: #b37b20;
+  font-size: 20px;
+}
+
+.dkw-invitation-inner:before {
+  top: 10px;
+  left: 12px;
+}
+
+.dkw-invitation-inner:after {
+  bottom: 10px;
+  right: 12px;
+}
+
+/* Thematic Asset 2: Subtle Golden Droplet inside the Invitation */
+.dkw-invitation-oil {
+  position: absolute;
+  width: 95px;
+  height: 125px;
+  right: -6px;
+  top: 10px;
+  object-fit: contain;
+  opacity: 0.22;
+  transform: rotate(8deg);
+  pointer-events: none;
+}
+
+.dkw-card-flower {
+  width: 46px;
+  height: 46px;
+  color: #a65b23;
+  margin-bottom: 6px;
+}
+
+.dkw-card-overline {
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: clamp(10.5px, 0.9vw, 12.5px);
+  font-weight: 900;
+  color: #8c5019;
+}
+
+.dkw-card-title {
+  font-family: 'Yatra One', serif;
+  font-size: clamp(32px, 3.2vw, 44px);
+  line-height: 1.22;
+  margin: 8px 0 4px;
+  color: var(--dkw-maroon-deep);
+}
+
+.dkw-card-title span {
+  display: block;
+  color: #a32c25;
+}
+
+.dkw-card-rule {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  color: #b27a21;
+}
+
+.dkw-card-rule:before,
+.dkw-card-rule:after {
+  content: '';
+  height: 1px;
+  background: currentColor;
+  flex: 1;
+}
+
+.dkw-card-date {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 2.8vw, 36px);
+  font-weight: 800;
+  color: var(--dkw-maroon);
+}
+
+.dkw-card-time {
+  margin-top: 6px;
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #8a571a;
+}
+
+.dkw-card-address {
+  margin-top: 12px;
+  font-size: clamp(12.5px, 1.05vw, 14.5px);
+  line-height: 1.65;
+  max-width: 330px;
+  color: #4a2916;
+  font-weight: 600;
+}
+
+.dkw-card-seal {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ad7626;
+  outline: 1.5px solid #ad7626;
+  outline-offset: 3px;
+  background: var(--dkw-maroon);
+  color: #ffe2a0;
+  margin-top: 14px;
+  font-size: 11px;
+  line-height: 1.35;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.26);
+}
+
+.dkw-card-seal span {
+  color: #f5c35a;
+}
+
+/* ============================================================
+   MARQUEE SECTION (NO FORBIDDEN PHRASES)
+   ============================================================ */
+.dkw-marquee {
+  background: var(--dkw-saffron);
+  color: var(--dkw-maroon-deep);
+  overflow: hidden;
+  border-top: 3px solid #e9c76e;
+  border-bottom: 3px solid #e9c76e;
+}
+
+.dkw-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 24px;
+  padding: 13px 0;
+  animation: dkw-marquee 32s linear infinite;
+  font-family: 'Yatra One', serif;
+  font-size: 16.5px;
+  white-space: nowrap;
+}
+
+.dkw-marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.dkw-marquee-track b {
+  font-size: 11px;
+  color: #a23b1c;
+}
+
+@keyframes dkw-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================
+   PRODUCTS SHOWCASE SECTION (THEMATIC USE OF 1-4.PNG)
+   ============================================================ */
+.dkw-section {
+  position: relative;
+  padding: clamp(60px, 7vw, 100px) clamp(20px, 5vw, 85px);
+}
+
+.dkw-section-inner {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.dkw-section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dkw-red);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.dkw-section-kicker:before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--dkw-saffron);
+}
+
+.dkw-section-heading {
+  font-family: 'Yatra One', serif;
+  font-size: clamp(32px, 4.4vw, 56px);
+  line-height: 1.2;
+  font-weight: 400;
+  margin: 15px 0 12px;
+  color: var(--dkw-maroon);
+}
+
+.dkw-section-intro {
+  max-width: 620px;
+  line-height: 1.85;
+  color: #765c4a;
+  font-size: 14px;
+  margin: 0;
+}
+
+.dkw-products-section {
+  background:
+    radial-gradient(circle at 0% 20%, rgba(225, 163, 40, 0.12), transparent 22%),
+    radial-gradient(circle at 100% 80%, rgba(130, 44, 32, 0.08), transparent 24%),
+    var(--dkw-paper);
+}
+
+.dkw-products-heading-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 25px;
+  margin-bottom: 36px;
+}
+
+.dkw-product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.dkw-product-card {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 16px 24px;
+  min-height: 310px;
+  border: 1px solid rgba(115, 57, 25, 0.18);
+  border-radius: 150px 150px 16px 16px;
+  text-align: center;
+  background: rgba(255, 250, 233, 0.82);
+  box-shadow: 0 4px 16px rgba(91, 46, 20, 0.06);
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dkw-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 38px rgba(91, 46, 20, 0.14);
+}
+
+.dkw-product-number {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-size: 10px;
+  font-weight: 900;
+  color: #b9a27c;
+}
+
+.dkw-product-art {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 10px auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid rgba(112, 56, 22, 0.15);
+  background: radial-gradient(circle at 35% 30%, #fff8d8, #edce76);
+  box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.7);
+}
+
+.dkw-product-art:before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(101, 49, 22, 0.32);
+  border-radius: 50%;
+}
+
+.dkw-product-art-img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 6px 8px rgba(70, 30, 10, 0.16));
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dkw-product-card:hover .dkw-product-art-img {
+  transform: scale(1.14) rotate(-3deg);
+}
+
+.dkw-product-hindi {
+  font-family: 'Yatra One', serif;
+  font-size: 20px;
+  color: var(--dkw-maroon);
+  line-height: 1.35;
+}
+
+.dkw-product-english {
+  margin-top: 5px;
+  color: #a26b29;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.dkw-product-description {
+  color: #7d654f;
+  font-size: 11px;
+  line-height: 1.65;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   STORY & LIVE EXTRACTION (THEMATIC USE OF 3.PNG)
+   ============================================================ */
+.dkw-story-section {
+  background: var(--dkw-maroon);
+  color: var(--dkw-cream);
+  overflow: hidden;
+}
+
+.dkw-story-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: clamp(35px, 6vw, 90px);
+}
+
+.dkw-story-illustration {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(247, 184, 51, 0.18), transparent 65%);
+}
+
+.dkw-story-illustration:before {
+  content: '';
+  position: absolute;
+  width: min(84%, 340px);
+  aspect-ratio: 1;
+  border: 1.5px solid rgba(255, 205, 89, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 0 16px rgba(255, 205, 89, 0.04), 0 0 0 36px rgba(255, 205, 89, 0.025);
+}
+
+.dkw-story-pour-img {
+  width: min(92%, 340px);
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.45));
+}
+
+.dkw-story-badge {
+  position: absolute;
+  bottom: 24px;
+  z-index: 3;
+  background: linear-gradient(135deg, #ffd86b, #e7a61c);
+  color: #3e1711;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-family: 'Yatra One', serif;
+  font-size: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border: 1.5px solid #fff;
+}
+
+.dkw-story-section .dkw-section-heading {
+  color: #ffe4a0;
+}
+
+.dkw-story-section .dkw-section-kicker {
+  color: #f4c75f;
+}
+
+.dkw-story-section .dkw-section-intro {
+  color: rgba(255, 245, 220, 0.78);
+}
+
+.dkw-story-quote {
+  border-left: 3px solid var(--dkw-saffron);
+  padding: 6px 0 6px 18px;
+  color: #f9d988;
+  font-family: 'Yatra One', serif;
+  font-size: 21px;
+  line-height: 1.7;
+  margin: 24px 0;
+}
+
+.dkw-story-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin-top: 26px;
+}
+
+.dkw-story-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 219, 134, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+}
+
+.dkw-story-point svg {
+  color: #f3c35a;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 15px;
+}
+
+.dkw-story-point span {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #f4e5c6;
+}
+
+/* ============================================================
+   COUNTDOWN SECTION
+   ============================================================ */
+.dkw-countdown-section {
+  background: var(--dkw-saffron);
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.3), transparent 28%),
+    radial-gradient(circle at 90% 90%, rgba(124, 42, 27, 0.1), transparent 25%);
+}
+
+.dkw-countdown-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: center;
+}
+
+.dkw-countdown-section .dkw-section-heading {
+  color: var(--dkw-maroon);
+}
+
+.dkw-countdown-section .dkw-section-intro {
+  color: #6b3a24;
+}
+
+.dkw-countdown-boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.dkw-time-box {
+  padding: 22px 8px 18px;
+  text-align: center;
+  background: #fff5d9;
+  border: 1.5px solid rgba(90, 23, 29, 0.25);
+  box-shadow: 4px 4px 0 rgba(90, 23, 29, 0.14);
+  border-radius: 8px;
+}
+
+.dkw-time-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 800;
+  color: var(--dkw-maroon);
+  line-height: 1;
+}
+
+.dkw-time-label {
+  margin-top: 10px;
+  color: #94612b;
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.dkw-countdown-note {
+  text-align: center;
+  color: #6b3021;
+  font-weight: 800;
+  font-size: 12px;
+  margin-top: 19px;
+}
+
+/* ============================================================
+   VISIT STORE & GOOGLE MAP SECTION
+   ============================================================ */
+.dkw-visit-section {
+  background: var(--dkw-cream);
+}
+
+.dkw-visit-grid {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 34px;
+  margin-top: 34px;
+  align-items: stretch;
+}
+
+.dkw-visit-card {
+  padding: clamp(24px, 3.8vw, 40px);
+  background: #fffaf0;
+  border: 1.5px solid rgba(117, 58, 27, 0.2);
+  box-shadow: 8px 8px 0 #eeddb6;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dkw-visit-card h3 {
+  font-family: 'Yatra One', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--dkw-maroon);
+  margin: 0 0 18px;
+}
+
+.dkw-detail-row {
+  display: flex;
+  gap: 13px;
+  padding: 14px 0;
+  border-bottom: 1px dashed rgba(117, 58, 27, 0.22);
+}
+
+.dkw-detail-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f9e6b7;
+  color: var(--dkw-red);
+  flex-shrink: 0;
+}
+
+.dkw-detail-label {
+  color: #9a774e;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.dkw-detail-value {
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 800;
+  color: #49271b;
+  margin-top: 3px;
+}
+
+.dkw-map-wrap {
+  min-height: 420px;
+  position: relative;
+  border: 6px solid #fffaf0;
+  outline: 1.5px solid rgba(117, 58, 27, 0.2);
+  box-shadow: 8px 8px 0 #eeddb6;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dkw-map-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.dkw-map-label {
+  position: absolute;
+  z-index: 1;
+  left: 16px;
+  top: 16px;
+  background: #fff8e7;
+  color: var(--dkw-maroon);
+  padding: 11px 15px;
+  border-radius: 6px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  font-size: 11px;
+  font-weight: 900;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ============================================================
+   FINAL INVITATION CALL TO ACTION
+   ============================================================ */
+.dkw-final-cta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #fff1ce;
+  padding: 72px 20px 80px;
+  background: var(--dkw-maroon-deep);
+}
+
+.dkw-final-cta h2 {
+  font-family: 'Yatra One', serif;
+  font-size: clamp(32px, 4.8vw, 56px);
+  font-weight: 400;
+  margin: 0 0 13px;
+  line-height: 1.25;
+}
+
+.dkw-final-cta p {
+  color: rgba(255, 241, 206, 0.75);
+  font-size: 14px;
+  line-height: 1.85;
+  margin: 0 auto;
+  max-width: 570px;
+}
+
+.dkw-final-cta .dkw-hero-actions {
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.dkw-final-flower {
+  color: #f4c45a;
+  width: 46px;
+  margin: 0 auto 14px;
+}
+
+/* ============================================================
+   FOOTER (NO FORBIDDEN PHRASES)
+   ============================================================ */
+.dkw-footer {
+  padding: 22px clamp(20px, 5vw, 85px);
+  background: #1c0608;
+  color: #d7bd8b;
+  font-size: 10.5px;
+  line-height: 1.8;
+  border-top: 1px solid rgba(244, 165, 28, 0.2);
+}
+
+.dkw-footer-inner {
+  max-width: 1220px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+
+.dkw-footer strong {
+  color: #f4c45a;
+}
+
+.dkw-corner {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  color: #d9ae4c;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.dkw-corner svg {
+  width: 100%;
+  height: 100%;
+}
+
+.dkw-corner-tl {
+  top: 22px;
+  left: 22px;
+}
+
+.dkw-corner-tr {
+  top: 22px;
+  right: 22px;
+}
+
+.dkw-corner-bl {
+  bottom: 22px;
+  left: 22px;
+}
+
+.dkw-corner-br {
+  bottom: 22px;
+  right: 22px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1023px) {
+  .dkw-hero-header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .dkw-hero-content {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 16px 0 24px;
+  }
+
+  .dkw-hero-copy {
+    text-align: center;
+  }
+
+  .dkw-hero-actions,
+  .dkw-trust-row {
+    justify-content: center;
+  }
+
+  .dkw-invitation {
+    max-width: 480px;
+    transform: none;
+  }
+
+  .dkw-hero-oil-splash {
+    width: 70vw;
+    height: 70vw;
+    top: 15%;
+    left: -30vw;
+  }
+
+  .dkw-product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dkw-story-grid,
+  .dkw-countdown-layout,
+  .dkw-visit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dkw-story-illustration {
+    min-height: 320px;
+    order: 2;
+  }
+
+  .dkw-story-copy {
+    order: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .dkw-topline {
+    font-size: 9.5px;
+    gap: 8px;
+  }
+
+  .dkw-hero-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .dkw-hero-brand {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .dkw-hero-brand-name {
+    font-size: 17px;
+  }
+
+  .dkw-hero-brand-sub {
+    font-size: 11px;
+  }
+
+  .dkw-nav-pill {
+    padding: 8px 18px;
+    font-size: 11px;
+  }
+
+  .dkw-hero h1 {
+    font-size: clamp(30px, 8.5vw, 44px);
+    margin: 14px 0 12px;
+  }
+
+  .dkw-hero-description {
+    font-size: 14.5px;
+    line-height: 1.68;
+  }
+
+  .dkw-hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .dkw-btn {
+    width: 100%;
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  .dkw-trust-row {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .dkw-invitation {
+    padding: 12px;
+    max-width: 100%;
+  }
+
+  .dkw-invitation-inner {
+    padding: 22px 14px 18px;
+  }
+
+  .dkw-card-title {
+    font-size: clamp(28px, 7.5vw, 36px);
+  }
+
+  .dkw-card-date {
+    font-size: clamp(24px, 6.5vw, 30px);
+  }
+
+  .dkw-card-address {
+    font-size: 12px;
+  }
+
+  .dkw-card-seal {
+    width: 66px;
+    height: 66px;
+    font-size: 9.5px;
+  }
+
+  .dkw-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .dkw-product-art {
+    width: 95px;
+    height: 95px;
+  }
+
+  .dkw-product-card {
+    min-height: 260px;
+    padding: 16px 10px;
+  }
+
+  .dkw-countdown-boxes {
+    gap: 7px;
+  }
+
+  .dkw-time-box {
+    padding: 16px 4px 12px;
+  }
+
+  .dkw-time-number {
+    font-size: clamp(22px, 7vw, 34px);
+  }
+
+  .dkw-footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}

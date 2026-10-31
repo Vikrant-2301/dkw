@@ -1,360 +1,597 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
-import { FiPhone, FiMapPin, FiCalendar, FiClock, FiExternalLink } from 'react-icons/fi';
+import confetti from 'canvas-confetti';
+import './grand-opening.css';
+import {
+  FiArrowDownRight,
+  FiArrowUpRight,
+  FiCalendar,
+  FiClock,
+  FiMapPin,
+  FiPhone,
+  FiNavigation,
+  FiStar,
+  FiCheckCircle,
+} from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 
-/* ─── Countdown ─── */
-function useCountdown(target: Date) {
-  const calc = () => {
-    const diff = target.getTime() - Date.now();
-    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    return {
-      days: Math.floor(diff / 86400000),
-      hours: Math.floor((diff % 86400000) / 3600000),
-      minutes: Math.floor((diff % 3600000) / 60000),
-      seconds: Math.floor((diff % 60000) / 1000),
-    };
+const OPENING_DATE = new Date('2026-11-01T09:00:00+05:30');
+
+function getTimeLeft() {
+  const difference = OPENING_DATE.getTime() - Date.now();
+
+  if (difference <= 0) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0, isOpen: true };
+  }
+
+  return {
+    days: Math.floor(difference / 86400000),
+    hours: Math.floor((difference % 86400000) / 3600000),
+    minutes: Math.floor((difference % 3600000) / 60000),
+    seconds: Math.floor((difference % 60000) / 1000),
+    isOpen: false,
   };
-  const [t, setT] = useState(calc);
-  useEffect(() => {
-    const id = setInterval(() => setT(calc()), 1000);
-    return () => clearInterval(id);
-  });
-  return t;
 }
 
-/* ─── Invitation reveal animation ─── */
-const styles = `
-  @keyframes sealPulse {
-    0%   { transform: scale(0.7); opacity: 0; }
-    50%  { transform: scale(1.06); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  @keyframes sealFade {
-    from { opacity: 1; transform: scale(1) rotate(0deg); }
-    to   { opacity: 0; transform: scale(1.8) rotate(8deg); }
-  }
-  @keyframes overlayFade {
-    from { opacity: 1; }
-    to   { opacity: 0; pointer-events: none; }
-  }
-  @keyframes invTextFade {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes shimmer {
-    0%   { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
-  @keyframes borderGlow {
-    0%, 100% { border-color: rgba(201,168,76,0.2); }
-    50%      { border-color: rgba(201,168,76,0.5); }
-  }
-  @keyframes cardReveal {
-    from { opacity: 0; transform: translateY(32px) scale(0.96); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes borderDraw {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  .seal-enter  { animation: sealPulse 1s cubic-bezier(.22,1,.36,1) 0.3s both; }
-  .inv-text-1  { animation: invTextFade 0.8s ease 1s both; }
-  .inv-text-2  { animation: invTextFade 0.8s ease 1.4s both; }
-  .inv-line    { animation: invTextFade 0.6s ease 0.7s both; }
-  .anim-card   { animation: cardReveal 1.2s cubic-bezier(.22,1,.36,1) 1.6s both; }
-  .anim-logo   { animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) 2.2s both; }
-  .anim-badge  { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 2.6s both; }
-  .anim-h1     { animation: fadeUp 0.8s cubic-bezier(.22,1,.36,1) 3.0s both; }
-  .anim-text   { animation: fadeUp 0.8s cubic-bezier(.22,1,.36,1) 3.3s both; }
-  .anim-right  { animation: fadeUp 1.0s cubic-bezier(.22,1,.36,1) 3.6s both; }
-  .anim-btns   { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 3.9s both; }
-  .anim-border { animation: borderDraw 1.8s ease 0.5s both; }
-  .overlay-anim { animation: overlayFade 1s ease-in-out 2.6s forwards; }
-  .seal-anim    { animation: sealFade 0.8s ease 2.2s forwards; }
-  .inv-shimmer {
-    background: linear-gradient(90deg, transparent 30%, rgba(201,168,76,0.15) 50%, transparent 70%);
-    background-size: 200% 100%;
-    animation: shimmer 2.5s ease-in-out infinite;
-  }
-  .inv-border-glow { animation: borderGlow 2s ease-in-out infinite; }
-`;
-
-export default function GrandOpeningPage() {
-  const { days, hours, minutes, seconds } = useCountdown(new Date('2026-11-01T09:00:00+05:30'));
-  const [overlayDone, setOverlayDone] = useState(false);
+function useOpeningCountdown() {
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, isOpen: false });
 
   useEffect(() => {
-    const t = setTimeout(() => setOverlayDone(true), 3600);
-    return () => clearTimeout(t);
+    setTime(getTimeLeft());
+    const interval = window.setInterval(() => setTime(getTimeLeft()), 1000);
+    return () => window.clearInterval(interval);
   }, []);
 
+  return time;
+}
+
+const products = [
+  {
+    number: '01',
+    hindi: 'सरसों का तेल',
+    english: 'Cold-Pressed Mustard Oil',
+    description: 'तीखा, असली और आँखों के सामने निकला हुआ पारंपरिक सरसों का तेल।',
+    symbol: 'सरसों',
+    tone: 'mustard',
+    image: '/images/4.png',
+  },
+  {
+    number: '02',
+    hindi: 'मूंगफली का तेल',
+    english: 'Groundnut Oil',
+    description: 'धीमी आंच पर तैयार, दैनिक भोजन और उत्तम स्वास्थ्य का साथी।',
+    symbol: 'मूंगफली',
+    tone: 'peanut',
+    image: '/images/3.png',
+  },
+  {
+    number: '03',
+    hindi: 'तिल का तेल',
+    english: 'Sesame Oil',
+    description: 'प्राकृतिक गुणों से भरपूर, खान-पान और पूजा के लिए सर्वोत्तम।',
+    symbol: 'तिल',
+    tone: 'sesame',
+    image: '/images/2.png',
+  },
+  {
+    number: '04',
+    hindi: 'नारियल का तेल',
+    english: 'Pure Coconut Oil',
+    description: 'ताज़े नारियल से बना सुगंधित और 100% शुद्ध तेल।',
+    symbol: 'नारियल',
+    tone: 'coconut',
+    image: '/images/1.png',
+  },
+  {
+    number: '05',
+    hindi: 'A2 बिलोना देसी घी',
+    english: 'Traditional Bilona Ghee',
+    description: 'पारंपरिक मथनी से तैयार, दानेदार और सुगंधित शुद्ध देसी घी।',
+    symbol: 'शुद्ध घी',
+    tone: 'ghee',
+    image: '/images/2.png',
+  },
+];
+
+function FloralMark({ className = '', style }: { className?: string; style?: React.CSSProperties }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      viewBox="0 0 100 100"
+      fill="none"
+      width="40"
+      height="40"
+      style={{ width: '100%', height: '100%', display: 'block', ...style }}
+    >
+      <g stroke="currentColor" strokeWidth="1.5">
+        <ellipse cx="50" cy="24" rx="9" ry="20" />
+        <ellipse cx="50" cy="76" rx="9" ry="20" />
+        <ellipse cx="24" cy="50" rx="20" ry="9" />
+        <ellipse cx="76" cy="50" rx="20" ry="9" />
+        <ellipse cx="31.5" cy="31.5" rx="8" ry="18" transform="rotate(-45 31.5 31.5)" />
+        <ellipse cx="68.5" cy="31.5" rx="8" ry="18" transform="rotate(45 68.5 31.5)" />
+        <ellipse cx="31.5" cy="68.5" rx="8" ry="18" transform="rotate(45 31.5 68.5)" />
+        <ellipse cx="68.5" cy="68.5" rx="8" ry="18" transform="rotate(-45 68.5 68.5)" />
+        <circle cx="50" cy="50" r="9" />
+        <circle cx="50" cy="50" r="3" fill="currentColor" />
+      </g>
+    </svg>
+  );
+}
+
+function DecorativeCorners() {
   return (
     <>
-      <style>{styles}</style>
-      <div className="min-h-screen lg:h-dvh w-full flex flex-col overflow-x-hidden lg:overflow-hidden" style={{ background: '#f7f3ec' }}>
+      <span className="dkw-corner dkw-corner-tl" aria-hidden="true" style={{ position: 'absolute', width: '40px', height: '40px' }}><FloralMark /></span>
+      <span className="dkw-corner dkw-corner-tr" aria-hidden="true" style={{ position: 'absolute', width: '40px', height: '40px' }}><FloralMark /></span>
+      <span className="dkw-corner dkw-corner-bl" aria-hidden="true" style={{ position: 'absolute', width: '40px', height: '40px' }}><FloralMark /></span>
+      <span className="dkw-corner dkw-corner-br" aria-hidden="true" style={{ position: 'absolute', width: '40px', height: '40px' }}><FloralMark /></span>
+    </>
+  );
+}
 
-        {/* ── INVITATION OVERLAY (animates away) ── */}
-        {!overlayDone && (
-          <div
-            className="overlay-anim fixed inset-0 z-50 flex flex-col items-center justify-center p-4"
-            style={{ background: 'linear-gradient(160deg, #1a150e 0%, #2b2318 40%, #3a2e1e 100%)', pointerEvents: 'all' }}
-          >
-            {/* Decorative frame lines */}
-            <div className="absolute inset-3 sm:inset-6 border inv-border-glow pointer-events-none" style={{ borderColor: 'rgba(201,168,76,0.25)' }} />
-            <div className="absolute inset-5 sm:inset-10 border inv-border-glow pointer-events-none" style={{ borderColor: 'rgba(201,168,76,0.12)', animationDelay: '0.5s' }} />
-            {/* Corner flourishes */}
-            <div className="absolute top-3 left-3 sm:top-6 sm:left-6 w-10 h-10 sm:w-16 sm:h-16 border-t-2 border-l-2 pointer-events-none inv-line" style={{ borderColor: '#c9a84c' }} />
-            <div className="absolute top-3 right-3 sm:top-6 sm:right-6 w-10 h-10 sm:w-16 sm:h-16 border-t-2 border-r-2 pointer-events-none inv-line" style={{ borderColor: '#c9a84c' }} />
-            <div className="absolute bottom-3 left-3 sm:bottom-6 sm:left-6 w-10 h-10 sm:w-16 sm:h-16 border-b-2 border-l-2 pointer-events-none inv-line" style={{ borderColor: '#c9a84c' }} />
-            <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 w-10 h-10 sm:w-16 sm:h-16 border-b-2 border-r-2 pointer-events-none inv-line" style={{ borderColor: '#c9a84c' }} />
-            {/* Shimmer overlay */}
-            <div className="absolute inset-0 inv-shimmer pointer-events-none" />
-            {/* Warm glow behind logo */}
-            <div className="absolute pointer-events-none" style={{ width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
-            {/* Seal */}
-            <div className="seal-anim flex flex-col items-center gap-5 sm:gap-6 text-center px-4">
-              <div className="seal-enter w-36 h-36 sm:w-48 sm:h-48 rounded-full shadow-2xl bg-[#2b2318] flex items-center justify-center p-2" style={{ boxShadow: '0 0 0 3px rgba(201,168,76,0.4), 0 0 0 8px rgba(201,168,76,0.15), 0 0 60px rgba(201,168,76,0.12)', }}>
-                <Image src="/logo.png" alt="DKW Seal" width={180} height={180} className="w-full h-full object-contain" priority />
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <p className="inv-text-1 text-sm sm:text-base tracking-[0.25em] sm:tracking-[0.35em] uppercase font-bold" style={{ color: '#c9a84c' }}>आप सादर आमंत्रित हैं</p>
-                <div className="inv-text-1 w-28 sm:w-32 h-px" style={{ background: 'linear-gradient(to right, transparent, #c9a84c, transparent)' }} />
-                <p className="inv-text-2 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase font-semibold" style={{ color: 'rgba(201,168,76,0.6)' }}>Grand Opening Invitation</p>
-              </div>
+export default function GrandOpeningPage() {
+  const { days, hours, minutes, seconds, isOpen } = useOpeningCountdown();
+
+  // Client hydration check to prevent any FOUC on SSR
+  const [mounted, setMounted] = useState(false);
+  const [showInvitation, setShowInvitation] = useState(true);
+  const [closingInvitation, setClosingInvitation] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const triggerConfetti = useCallback(() => {
+    try {
+      const colors = ['#f4a51c', '#ffd86b', '#e7a61c', '#8c2425', '#fff5dc'];
+      confetti({
+        particleCount: 75,
+        spread: 85,
+        origin: { y: 0.6, x: 0.5 },
+        colors,
+        zIndex: 10002,
+      });
+    } catch {
+      // Graceful fallback
+    }
+  }, []);
+
+  const closeInvitation = useCallback(() => {
+    if (closingInvitation) return;
+    setClosingInvitation(true);
+    triggerConfetti();
+    window.setTimeout(() => setShowInvitation(false), 850);
+  }, [closingInvitation, triggerConfetti]);
+
+  useEffect(() => {
+    if (!showInvitation || !mounted) return;
+    const timer = window.setTimeout(closeInvitation, 4200);
+    return () => window.clearTimeout(timer);
+  }, [showInvitation, mounted, closeInvitation]);
+
+  return (
+    <main className="dkw-page">
+      {/* ============================================================
+          GRAND OPENING INTRO ANIMATION (HYDRATION-SAFE OVERLAY)
+          ============================================================ */}
+      {mounted && showInvitation && (
+        <div
+          className={`dkw-intro-overlay ${closingInvitation ? 'is-leaving' : ''}`}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            display: 'grid',
+            placeItems: 'center',
+            backgroundColor: '#1f0609',
+            color: '#fff0c7',
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Grand opening invitation preview"
+        >
+          <div className="dkw-intro-curtain" />
+
+          <div className="dkw-intro-content">
+            <div className="dkw-intro-seal">
+              <Image src="/logo.png" alt="Delhi Kolhu Wale" width={104} height={104} priority />
+            </div>
+
+            <div className="dkw-intro-kicker">Special Invitation · Grand Opening</div>
+
+            <h2 className="dkw-intro-title">
+              दिल्ली कोल्हू वाले
+              <span>भव्य शुभारंभ</span>
+            </h2>
+
+            <p className="dkw-intro-copy">
+              शुद्धता और परंपरा के इस पावन अवसर पर आपका हार्दिक स्वागत है।
+              आइए, हमारे नए आउटलेट के शुभारंभ का हिस्सा बनिए।
+            </p>
+
+            <div className="dkw-intro-date">
+              <span>1 November 2026 · रविवार सुबह 9 बजे से</span>
+            </div>
+
+            <button className="dkw-intro-open" onClick={closeInvitation}>
+              ✦ निमंत्रण स्वीकार करें / Enter Grand Opening ✦
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ============================================================
+          TOP ANNOUNCEMENT RIBBON
+          ============================================================ */}
+      <div className="dkw-topline">
+        <span className="dot">✦</span>
+        <span>आँखों के सामने निकलता</span>
+        <span className="dot">·</span>
+        <span>भरोसे से बिकता है</span>
+        <span className="dot">✦</span>
+        <span>100% शुद्ध तेल और देसी घी</span>
+        <span className="dot">·</span>
+        <span>कृष्णा नगर, दिल्ली</span>
+        <span className="dot">✦</span>
+      </div>
+
+      {/* ============================================================
+          HERO SECTION (BALANCED SINGLE SCREEN ON DESKTOP, BOLD TEXT)
+          ============================================================ */}
+      <section className="dkw-hero" id="top">
+        <DecorativeCorners />
+        <div className="dkw-hero-glow" />
+
+        {/* Thematic Asset 1: Pure Golden Splash behind headline */}
+        <Image
+          className="dkw-hero-oil-splash"
+          src="/images/1.png"
+          alt=""
+          width={500}
+          height={500}
+          priority
+        />
+
+        {/* Header Bar: Brand Identity on Left, Visit Pill on Right */}
+        <header className="dkw-hero-header" aria-label="Brand and navigation">
+          <div className="dkw-hero-brand">
+            <div className="dkw-hero-brand-logo">
+              <Image src="/logo.png" alt="Delhi Kolhu Wale logo" width={68} height={68} priority />
+            </div>
+            <div>
+              <div className="dkw-hero-brand-name">DELHI KOLHU WALE</div>
+              <div className="dkw-hero-brand-sub dkw-hindi">दिल्ली कोल्हू वाले · शुद्धता का भरोसा</div>
             </div>
           </div>
-        )}
 
-        {/* ── TOP BAR ── */}
-        <div
-          className="flex-shrink-0 text-amber-200/80 text-[10px] sm:text-[11px] font-semibold py-1.5 px-3 sm:px-4 text-center tracking-wider sm:tracking-widest uppercase leading-snug"
-          style={{ background: '#2b2318' }}
-        >
-          आँखों के सामने निकलता &nbsp;&middot;&nbsp; भरोसे से बिकता है &nbsp;&middot;&nbsp; 100% शुद्ध तेल और देसी घी
-        </div>
+          <a className="dkw-nav-pill" href="#visit">
+            VISIT OUR NEW OUTLET ↗
+          </a>
+        </header>
 
-        {/* ── MAIN ── */}
-        <div className="flex-1 flex flex-col lg:flex-row min-h-0 anim-card">
-
-          {/* ═══ LEFT — Invitation content ═══ */}
-          <div
-            className="w-full lg:w-[48%] flex-shrink-0 flex flex-col justify-center items-center lg:items-start px-5 sm:px-10 lg:px-12 xl:px-16 py-8 sm:py-10 lg:py-5 gap-4 relative overflow-hidden"
-            style={{ background: 'linear-gradient(145deg, #2b2318 0%, #3a2e1e 60%, #2e2318 100%)' }}
-          >
-            {/* Corner ornaments */}
-            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 w-7 h-7 sm:w-10 sm:h-10 border-t-2 border-l-2 border-amber-500/40 pointer-events-none anim-border" />
-            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-7 h-7 sm:w-10 sm:h-10 border-t-2 border-r-2 border-amber-500/40 pointer-events-none anim-border" />
-            <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 w-7 h-7 sm:w-10 sm:h-10 border-b-2 border-l-2 border-amber-500/40 pointer-events-none anim-border" />
-            <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-7 h-7 sm:w-10 sm:h-10 border-b-2 border-r-2 border-amber-500/40 pointer-events-none anim-border" />
-            {/* Subtle warm glow center */}
-            <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(180,130,40,0.07) 0%, transparent 70%)' }} />
-
-            {/* Logo + Brand name */}
-            <div className="anim-logo flex flex-col items-center lg:items-start gap-4 w-full">
-              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 text-center sm:text-left">
-                <div
-                  className="w-24 h-24 sm:w-28 sm:h-28 lg:w-36 lg:h-36 rounded-2xl overflow-hidden shadow-2xl bg-white p-2 flex-shrink-0"
-                  style={{ boxShadow: '0 0 0 3px rgba(212,175,55,0.5), 0 0 0 7px rgba(212,175,55,0.15), 0 12px 40px rgba(0,0,0,0.5)' }}
-                >
-                  <Image src="/logo.png" alt="DKW Logo" width={140} height={140} className="w-full h-full object-contain" priority />
-                </div>
-                <div>
-                  <p className="font-black text-xl sm:text-2xl xl:text-3xl uppercase tracking-wide font-serif text-white leading-tight">
-                    DELHI KOLHU WALE
-                  </p>
-                  <p className="text-xs sm:text-sm font-semibold mt-1" style={{ color: '#c9a84c' }}>
-                    दिल्ली कोल्हू वाले &nbsp;&middot;&nbsp; 100% Pure Oil &amp; Ghee
-                  </p>
-                </div>
-              </div>
+        {/* Main Content: Brand Heading & Actions on Left, Royal Invitation Card on Right */}
+        <div className="dkw-hero-content">
+          {/* Left Column: Authoritative Typography */}
+          <div className="dkw-hero-copy">
+            <div className="dkw-eyebrow">
+              <FiStar />
+              <span>आप सादर आमंत्रित हैं · Grand Opening</span>
+              <FiStar />
             </div>
 
-            {/* Divider */}
-            <div className="w-full max-w-xs h-px opacity-30" style={{ background: 'linear-gradient(to right, transparent, #c9a84c, transparent)' }} />
+            <h1>
+              परंपरा का स्वाद,
+              <br />
+              <em>अब आपके और करीब।</em>
+            </h1>
 
-            {/* Badge */}
-            <div
-              className="anim-badge inline-flex items-center gap-2 self-center lg:self-start px-3.5 py-1 rounded-full border text-[9px] sm:text-[10px] font-bold tracking-wider sm:tracking-widest uppercase text-center"
-              style={{ borderColor: 'rgba(201,168,76,0.35)', background: 'rgba(201,168,76,0.08)', color: '#c9a84c' }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style={{ background: '#c9a84c' }} />
-              Grand Opening &nbsp;&middot;&nbsp; भव्य उद्घाटन &nbsp;&middot;&nbsp; 1 Nov 2026
-            </div>
+            <p className="dkw-hero-description">
+              दिल्ली कोल्हू वाले के नए आउटलेट के शुभारंभ पर आपका हार्दिक स्वागत है।
+              आइए, <strong>शुद्ध तेल और देसी घी</strong> के स्वाद और भरोसे का उत्सव साथ मनाएँ।
+            </p>
 
-            {/* Headline */}
-            <div className="anim-h1 text-center lg:text-left">
-              <h1 className="font-black text-white leading-snug text-2xl sm:text-3xl lg:text-[clamp(1.4rem,2.4vw,2rem)]">
-                हमारा नया आउटलेट
-                <br />
-                <span style={{ color: '#c9a84c' }}>1 नवंबर 2026</span> को खुल रहा है
-              </h1>
-              <p className="mt-1.5 text-xs sm:text-sm max-w-sm text-center lg:text-left mx-auto lg:mx-0" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                You are cordially invited to our grand opening at Krishna Nagar, Delhi.
-              </p>
-            </div>
-
-            {/* Invitation text */}
-            <div
-              className="anim-text w-full max-w-md rounded-xl p-3.5 sm:p-4 space-y-2 text-xs sm:text-sm leading-relaxed"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(201,168,76,0.15)' }}
-            >
-              <p style={{ color: 'rgba(255,255,255,0.75)' }}>
-                हमारे यहाँ मिलता है —{' '}
-                <span className="font-semibold" style={{ color: '#c9a84c' }}>शुद्ध तेल और देसी घी</span>।
-                लकड़ी की घानी में पिराया सरसों, मूंगफली, तिल, नारियल तेल और
-                बिलोना विधि का{' '}
-                <span className="font-semibold" style={{ color: '#c9a84c' }}>A2 गाय का देसी घी</span> — बिना मिलावट के।
-              </p>
-              <p
-                className="border-l-2 pl-3 italic text-[11px] sm:text-xs"
-                style={{ borderColor: 'rgba(201,168,76,0.4)', color: 'rgba(201,168,76,0.75)' }}
-              >
-                &ldquo;एक बार सेवा का अवसर अवश्य दें — जो एक बार आता है, वो बार-बार आता है।&rdquo;
-              </p>
-            </div>
-
-            {/* CTA buttons */}
-            <div className="anim-btns flex flex-wrap sm:flex-nowrap w-full sm:w-auto gap-2.5 justify-center lg:justify-start">
-              <a
-                id="grand-opening-call"
-                href="tel:9599207645"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-black text-xs sm:text-sm shadow-lg transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap min-h-[42px]"
-                style={{ background: '#c9a84c', color: '#1c1208' }}
-              >
-                <FiPhone className="w-3.5 h-3.5" />
-                +91 9599207645
+            <div className="dkw-hero-actions">
+              <a className="dkw-btn dkw-btn-gold" href="tel:9599207645">
+                <FiPhone /> Call: +91 9599207645
               </a>
               <a
-                id="grand-opening-whatsapp"
+                className="dkw-btn dkw-btn-outline"
                 href="https://wa.me/919599207645?text=Hello%20DKW%2C%20I%20want%20to%20visit%20your%20new%20outlet%20grand%20opening%20on%201st%20November!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-black text-xs sm:text-sm text-white shadow-lg transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap min-h-[42px]"
-                style={{ background: '#22863a' }}
               >
-                <FaWhatsapp className="w-4 h-4" />
-                WhatsApp
+                <FaWhatsapp /> WhatsApp Us
               </a>
+            </div>
+
+            <div className="dkw-trust-row">
+              <span><FiCheckCircle /> 100% शुद्ध तेल और घी</span>
+              <span><FiCheckCircle /> परिवार के स्वास्थ्य के लिए</span>
+              <span><FiCheckCircle /> दिल्ली में आपका स्वागत</span>
             </div>
           </div>
 
-          {/* ═══ RIGHT — Countdown + Details + Map ═══ */}
-          <div
-            className="flex-1 flex flex-col px-5 sm:px-8 lg:px-10 xl:px-12 py-6 lg:py-5 gap-4 anim-right relative lg:overflow-y-auto"
-            style={{ background: '#f7f3ec' }}
-          >
-            {/* Subtle watermark pattern */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-[0.04]"
-              style={{ backgroundImage: 'radial-gradient(circle, #8B6914 1px, transparent 1px)', backgroundSize: '24px 24px' }}
-            />
+          {/* Right Column: Grand Opening Royal Invitation Card */}
+          <div className="dkw-invitation" aria-label="Grand opening invitation card">
+            <div className="dkw-invitation-inner">
+              {/* Thematic Asset 2: Droplet Watermark Accent */}
+              <Image
+                className="dkw-invitation-oil"
+                src="/images/2.png"
+                alt=""
+                width={120}
+                height={140}
+              />
 
-            {/* Countdown */}
-            <div>
-              <p
-                className="text-[10px] font-black uppercase tracking-widest mb-2.5 text-center flex items-center justify-center gap-2"
-                style={{ color: '#8B6914' }}
-              >
-                <span className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, rgba(139,105,20,0.3))' }} />
-                उद्घाटन में बचा समय — Countdown
-                <span className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, rgba(139,105,20,0.3))' }} />
-              </p>
-              <div className="grid grid-cols-4 gap-2 sm:gap-3">
-                {[
-                  { val: days, label: 'Days / दिन' },
-                  { val: hours, label: 'Hours / घंटे' },
-                  { val: minutes, label: 'Mins / मिनट' },
-                  { val: seconds, label: 'Secs / सेकंड' },
-                ].map(({ val, label }) => (
-                  <div
-                    key={label}
-                    className="flex flex-col items-center gap-1 rounded-2xl py-2.5 sm:py-3 px-1"
-                    style={{ background: 'white', border: '1px solid rgba(139,105,20,0.2)', boxShadow: '0 2px 12px rgba(139,105,20,0.08)' }}
-                  >
-                    <span className="font-black tabular-nums leading-none text-xl sm:text-2xl lg:text-[clamp(1.4rem,2.8vw,2.2rem)]" style={{ color: '#2b2318' }}>
-                      {String(val).padStart(2, '0')}
-                    </span>
-                    <span className="text-[8px] sm:text-[10px] font-semibold uppercase tracking-wide text-center leading-tight mt-0.5 px-0.5" style={{ color: '#8B6914' }}>
-                      {label}
-                    </span>
-                  </div>
-                ))}
+              <div style={{ width: '46px', height: '46px' }}>
+                <FloralMark className="dkw-card-flower" />
+              </div>
+
+              <div className="dkw-card-overline">Delhi Kolhu Wale invites you</div>
+              <div className="dkw-card-title">
+                शुभारंभ
+                <span>मंगलमय हो</span>
+              </div>
+              <div className="dkw-card-rule"><span>✦</span></div>
+              <div className="dkw-card-date">1 November 2026</div>
+              <div className="dkw-card-time">SUNDAY · 9:00 AM ONWARDS</div>
+              <div className="dkw-card-address">
+                A1/10, Near Chhachi Building,<br />
+                Main Road, Krishna Nagar,<br />
+                Delhi – 110051
+              </div>
+              <div className="dkw-card-seal">
+                शुभ
+                <span>आरंभ</span>
+                ✦ ✦ ✦
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Event detail chips */}
-            <div className="grid grid-cols-3 gap-2">
+      {/* ============================================================
+          DYNAMIC MARQUEE (NO FORBIDDEN PHRASES)
+          ============================================================ */}
+      <div className="dkw-marquee" aria-label="Pure Cold-pressed Oil and Desi Ghee">
+        <div className="dkw-marquee-track">
+          {[0, 1].map((copy) => (
+            <span key={copy}>
+              कोल्ड प्रेस्ड शुद्ध तेल <b>✦</b> शुद्ध A2 बिलोना देसी घी <b>✦</b> परंपरा और भरोसा <b>✦</b>
+              सरसों · मूंगफली · तिल · नारियल <b>✦</b> स्वाद जो घर जैसा हो <b>✦</b>
+              आँखों के सामने निकलता, भरोसे से बिकता है <b>✦</b>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ============================================================
+          PRODUCTS SECTION (THEMATIC USE OF 1-4.PNG)
+          ============================================================ */}
+      <section className="dkw-section dkw-products-section" id="products">
+        <div className="dkw-section-inner">
+          <div className="dkw-products-heading-row">
+            <div>
+              <div className="dkw-section-kicker">From our family to yours</div>
+              <h2 className="dkw-section-heading">हर रसोई की अपनी कहानी।</h2>
+            </div>
+            <p className="dkw-section-intro">
+              रोज़ के खाने से लेकर खास मौकों तक — हमारे यहाँ तेल और देसी घी की
+              पारंपरिक और शुद्ध पसंद का स्वागत है।
+            </p>
+          </div>
+
+          <div className="dkw-product-grid">
+            {products.map((product) => (
+              <article className="dkw-product-card" key={product.number}>
+                <span className="dkw-product-number">{product.number}</span>
+                <div className={`dkw-product-art ${product.tone}`}>
+                  <Image
+                    className="dkw-product-art-img"
+                    src={product.image}
+                    alt={`${product.english} visual`}
+                    width={140}
+                    height={140}
+                  />
+                </div>
+                <div className="dkw-product-hindi">{product.hindi}</div>
+                <div className="dkw-product-english">{product.english}</div>
+                <p className="dkw-product-description">{product.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          STORY & LIVE EXTRACTION (THEMATIC USE OF 3.PNG)
+          ============================================================ */}
+      <section className="dkw-section dkw-story-section">
+        <div className="dkw-section-inner dkw-story-grid">
+          <div className="dkw-story-illustration" aria-hidden="true">
+            {/* Thematic Asset 3: Pure Golden Stream pouring into ripple puddle */}
+            <Image
+              className="dkw-story-pour-img"
+              src="/images/3.png"
+              alt="Live Pure Oil Extraction"
+              width={340}
+              height={340}
+            />
+
+            <div className="dkw-story-badge">
+              ✦ शुद्धता का भरोसा ✦
+            </div>
+          </div>
+
+          <div className="dkw-story-copy">
+            <div className="dkw-section-kicker">Rooted in tradition</div>
+            <h2 className="dkw-section-heading">स्वाद में परंपरा,<br />रिश्तों में भरोसा।</h2>
+            <p className="dkw-section-intro">
+              कुछ स्वाद सिर्फ खाने का हिस्सा नहीं होते — वे यादों, परिवार और
+              परंपरा से जुड़े होते हैं। दिल्ली कोल्हू वाले में आपका स्वागत है।
+            </p>
+            <div className="dkw-story-quote">
+              “एक बार सेवा का अवसर अवश्य दें — जो एक बार आता है, वो बार-बार आता है।”
+            </div>
+            <div className="dkw-story-points">
+              <div className="dkw-story-point">
+                <FiCheckCircle />
+                <span>कोल्ड प्रेस्ड सरसों, मूंगफली, तिल और नारियल तेल की पसंद</span>
+              </div>
+              <div className="dkw-story-point">
+                <FiCheckCircle />
+                <span>बिलोना विधि का A2 गाय का शुद्ध देसी घी</span>
+              </div>
+              <div className="dkw-story-point">
+                <FiCheckCircle />
+                <span>कृष्णा नगर में नए आउटलेट पर आपका हार्दिक स्वागत है</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          COUNTDOWN SECTION
+          ============================================================ */}
+      <section className="dkw-section dkw-countdown-section" id="countdown">
+        <div className="dkw-section-inner dkw-countdown-layout">
+          <div>
+            <div className="dkw-section-kicker">Mark your calendar</div>
+            <h2 className="dkw-section-heading">
+              {isOpen ? 'हमारा नया आउटलेट खुल चुका है!' : 'उद्घाटन में अब कितना समय बाकी है?'}
+            </h2>
+            <p className="dkw-section-intro">
+              1 नवंबर 2026, सुबह 9 बजे से — कृष्णा नगर, दिल्ली में हमारे नए आउटलेट पर
+              पधारें। हमें आपकी प्रतीक्षा रहेगी।
+            </p>
+          </div>
+          <div>
+            <div className="dkw-countdown-boxes" aria-label="Countdown to grand opening">
               {[
-                { icon: <FiCalendar className="w-3.5 h-3.5" />, label: 'तारीख', value: '1 Nov 2026' },
-                { icon: <FiClock className="w-3.5 h-3.5" />, label: 'समय', value: '9 AM onwards' },
-                { icon: <FiMapPin className="w-3.5 h-3.5" />, label: 'स्थान', value: 'Krishna Nagar' },
-              ].map(({ icon, label, value }) => (
-                <div
-                  key={label}
-                  className="flex flex-col gap-1 p-2.5 sm:p-3 rounded-xl"
-                  style={{ background: 'white', border: '1px solid rgba(139,105,20,0.18)', boxShadow: '0 1px 8px rgba(139,105,20,0.06)' }}
-                >
-                  <span style={{ color: '#8B6914' }}>{icon}</span>
-                  <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-wide" style={{ color: '#8B6914', opacity: 0.7 }}>{label}</p>
-                  <p className="font-black text-xs sm:text-sm leading-tight" style={{ color: '#2b2318' }}>{value}</p>
+                { value: days, label: 'Days / दिन' },
+                { value: hours, label: 'Hours / घंटे' },
+                { value: minutes, label: 'Minutes / मिनट' },
+                { value: seconds, label: 'Seconds / सेकंड' },
+              ].map((item) => (
+                <div className="dkw-time-box" key={item.label}>
+                  <div className="dkw-time-number" suppressHydrationWarning>
+                    {mounted ? String(item.value).padStart(2, '0') : '--'}
+                  </div>
+                  <div className="dkw-time-label">{item.label}</div>
                 </div>
               ))}
             </div>
-
-            {/* Google Map */}
-            <div className="flex-1 flex flex-col gap-1.5 min-h-[220px] lg:min-h-0">
-              <p
-                className="text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5"
-                style={{ color: '#8B6914' }}
-              >
-                <FiMapPin className="w-3 h-3 flex-shrink-0" />
-                <span>A1/10, Near Chhachi Building, Main Road, Krishna Nagar, Delhi – 110051</span>
-              </p>
-              <div
-                className="w-full h-52 sm:h-60 lg:h-full lg:flex-1 rounded-2xl overflow-hidden min-h-[180px]"
-                style={{ border: '1px solid rgba(139,105,20,0.22)', boxShadow: '0 4px 16px rgba(139,105,20,0.1)' }}
-              >
-                <iframe
-                  title="DKW Delhi Kolhu Wale — Store Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.214479904321!2d77.27458617549646!3d28.66037297564757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd2523ae2e2b%3A0x5eaa96900853cafc!2sDELHI%20KOLHU%20WALE!5e0!3m2!1sen!2sin!4v1714000000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, display: 'block', width: '100%', height: '100%', minHeight: '180px' }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-              <a
-                href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold transition-colors self-start hover:opacity-80 py-1"
-                style={{ color: '#8B6914' }}
-              >
-                <FiExternalLink className="w-3 h-3" />
-                Google Maps पर खोलें / Get Directions
-              </a>
+            <div className="dkw-countdown-note">
+              ✦ &nbsp; रविवार, 1 नवंबर 2026 · सुबह 9 बजे से &nbsp; ✦
             </div>
           </div>
         </div>
+      </section>
 
-        {/* ── BOTTOM BAR ── */}
-        <div
-          className="flex-shrink-0 text-[10px] sm:text-[11px] py-2.5 px-4 flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left"
-          style={{ background: '#2b2318', color: 'rgba(201,168,76,0.6)' }}
-        >
-          <p>FSSAI: 13322008000456 &nbsp;&middot;&nbsp; Open Daily 9:00 AM – 11:00 PM &nbsp;&middot;&nbsp; A1/10 Krishna Nagar, Delhi-110051</p>
-          <p style={{ color: 'rgba(255,255,255,0.3)' }}>&copy; {new Date().getFullYear()} Delhi Kolhu Wale. All rights reserved.</p>
+      {/* ============================================================
+          VISIT STORE & GOOGLE MAP SECTION
+          ============================================================ */}
+      <section className="dkw-section dkw-visit-section" id="visit">
+        <div className="dkw-section-inner">
+          <div className="dkw-section-kicker">Come say hello</div>
+          <h2 className="dkw-section-heading">रास्ता आपके दिल से,<br />मिलते हैं कृष्णा नगर में।</h2>
+          <p className="dkw-section-intro">
+            उद्घाटन के दिन हमसे मिलने आइए। नीचे दिए गए पते पर पहुँचें या दिशा-निर्देश
+            खोलकर अपनी यात्रा आसान बनाएँ।
+          </p>
+
+          <div className="dkw-visit-grid">
+            <div className="dkw-visit-card">
+              <h3>आपका इंतज़ार रहेगा।</h3>
+              <div className="dkw-detail-row">
+                <div className="dkw-detail-icon"><FiCalendar /></div>
+                <div>
+                  <div className="dkw-detail-label">Grand opening</div>
+                  <div className="dkw-detail-value">Sunday, 1 November 2026</div>
+                </div>
+              </div>
+              <div className="dkw-detail-row">
+                <div className="dkw-detail-icon"><FiClock /></div>
+                <div>
+                  <div className="dkw-detail-label">Opening time</div>
+                  <div className="dkw-detail-value">9:00 AM onwards</div>
+                </div>
+              </div>
+              <div className="dkw-detail-row">
+                <div className="dkw-detail-icon"><FiMapPin /></div>
+                <div>
+                  <div className="dkw-detail-label">Visit us</div>
+                  <div className="dkw-detail-value">A1/10, Near Chhachi Building, Main Road, Krishna Nagar, Delhi – 110051</div>
+                </div>
+              </div>
+              <div className="dkw-detail-row">
+                <div className="dkw-detail-icon"><FiPhone /></div>
+                <div>
+                  <div className="dkw-detail-label">Call for details</div>
+                  <a className="dkw-detail-value" href="tel:9599207645">+91 9599207645</a>
+                </div>
+              </div>
+              <div className="dkw-hero-actions">
+                <a className="dkw-btn dkw-btn-gold" href="https://maps.app.goo.gl/DvzUPscBrJFgtv1Y7" target="_blank" rel="noopener noreferrer">
+                  <FiNavigation /> Get Directions <FiArrowUpRight />
+                </a>
+              </div>
+            </div>
+
+            <div className="dkw-map-wrap">
+              <div className="dkw-map-label"><FiMapPin /> DELHI KOLHU WALE · KRISHNA NAGAR</div>
+              <iframe
+                title="Delhi Kolhu Wale store location in Krishna Nagar, Delhi"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.214479904321!2d77.27458617549646!3d28.66037297564757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd2523ae2e2b%3A0x5eaa96900853cafc!2sDELHI%20KOLHU%20WALE!5e0!3m2!1sen!2sin!4v1714000000000!5m2!1sen!2sin"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </>
+      </section>
+
+      {/* ============================================================
+          FINAL INVITATION CALL TO ACTION
+          ============================================================ */}
+      <section className="dkw-final-cta">
+        <div style={{ width: '46px', height: '46px', margin: '0 auto 14px' }}>
+          <FloralMark className="dkw-final-flower" />
+        </div>
+        <h2>शुभारंभ में ज़रूर पधारें।</h2>
+        <p>
+          आपका आना हमारे लिए खुशी की बात होगी। अपने परिवार के साथ आइए और
+          दिल्ली कोल्हू वाले के नए सफ़र का हिस्सा बनिए।
+        </p>
+        <div className="dkw-hero-actions">
+          <a className="dkw-btn dkw-btn-gold" href="tel:9599207645"><FiPhone /> +91 9599207645</a>
+          <a
+            className="dkw-btn dkw-btn-outline"
+            href="https://wa.me/919599207645?text=Hello%20DKW%2C%20I%20want%20to%20visit%20your%20new%20outlet%20grand%20opening%20on%201st%20November!"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaWhatsapp /> WhatsApp Us
+          </a>
+        </div>
+      </section>
+
+      {/* ============================================================
+          FOOTER (NO FORBIDDEN PHRASES)
+          ============================================================ */}
+      <footer className="dkw-footer">
+        <div className="dkw-footer-inner">
+          <div><strong>DELHI KOLHU WALE</strong> · आँखों के सामने निकलता, भरोसे से बिकता है</div>
+          <div>Open Daily 9:00 AM – 11:00 PM · A1/10 Krishna Nagar, Delhi-110051</div>
+          <div>© {new Date().getFullYear()} Delhi Kolhu Wale. All rights reserved.</div>
+        </div>
+      </footer>
+    </main>
   );
 }
